@@ -209,20 +209,28 @@ document.addEventListener('DOMContentLoaded', function() {
             if (entry.isIntersecting) {
                 const counter = entry.target;
                 const target = parseInt(counter.getAttribute('data-target'));
-                const currentYear = new Date().getFullYear();
-                let current = currentYear;
-                const decrement = (currentYear - target) / 50;
+                const currentYear = new Date().getFullYear() + 1; // Start from 2026
+                const totalSteps = 100; // More steps for smoother animation
+                let step = 0;
 
-                counter.textContent = current;
+                counter.textContent = currentYear;
+
+                // Quintic easing function (very slow start, very fast end)
+                const easeInQuint = (t) => t * t * t * t * t;
 
                 const timer = setInterval(() => {
-                    current -= decrement;
-                    if (current <= target) {
+                    step++;
+                    const progress = step / totalSteps;
+                    const easedProgress = easeInQuint(progress);
+
+                    let current = currentYear - (currentYear - target) * easedProgress;
+
+                    if (step >= totalSteps) {
                         current = target;
                         clearInterval(timer);
                     }
                     counter.textContent = Math.floor(current);
-                }, 30);
+                }, 25); // Shorter interval for smoother animation
 
                 yearCounterObserver.unobserve(counter);
             }
@@ -230,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { threshold: 0.5 });
 
     yearCounters.forEach(counter => {
-        const currentYear = new Date().getFullYear();
+        const currentYear = new Date().getFullYear() + 1; // Start from 2026
         counter.textContent = currentYear;
         yearCounterObserver.observe(counter);
     });
