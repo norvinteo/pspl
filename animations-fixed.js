@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Counter animations for stats
-        const counterElements = document.querySelectorAll('.counter-number');
+        const counterElements = document.querySelectorAll('.counter[data-target]');
         counterElements.forEach(counter => {
             const target = parseInt(counter.getAttribute('data-target')) || 0;
 

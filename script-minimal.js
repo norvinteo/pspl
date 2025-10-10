@@ -1,5 +1,6 @@
 // Minimal JavaScript for essential functionality
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOMContentLoaded event fired - script is running');
 
     // Initialize Lucide icons
     if (typeof lucide !== 'undefined') {
@@ -593,8 +594,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Generate portfolio HTML from projectData
     function generatePortfolioHTML() {
+        console.log('generatePortfolioHTML function called');
+        console.log('projectData length:', projectData.length);
+
         const portfolioGrid = document.getElementById('portfolioGrid');
-        if (!portfolioGrid) return;
+        console.log('Portfolio grid found:', !!portfolioGrid);
+        if (!portfolioGrid) {
+            console.log('Portfolio grid not found, returning early');
+            return;
+        }
 
         // Clear existing content
         portfolioGrid.innerHTML = '';
@@ -645,8 +653,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Portfolio filtering
+    console.log('About to set up portfolio filtering...');
     const filterButtons = document.querySelectorAll('.filter-btn');
+    console.log('Filter buttons found:', filterButtons.length);
+
+    console.log('About to call generatePortfolioHTML...');
     let portfolioItems = generatePortfolioHTML(); // Generate items dynamically
+    console.log('generatePortfolioHTML returned:', portfolioItems ? portfolioItems.length : 'undefined');
     const loadMoreBtn = document.getElementById('loadMoreBtn');
     let visibleItems = 9;
     let currentFilter = 'all';
@@ -960,32 +973,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-}); // Close DOMContentLoaded
+    // WhatsApp function with service selection
+    let selectedService = null;
 
-// WhatsApp function with service selection
-let selectedService = null;
+    window.selectService = function(service) {
+        selectedService = service;
 
-function selectService(service) {
-    selectedService = service;
+        // Update button styles to show selected state
+        const buttons = document.querySelectorAll('.service-btn');
+        buttons.forEach(btn => {
+            btn.classList.remove('bg-pspl-gold/20', 'border-pspl-gold');
+            btn.classList.add('border-pspl-gold/50');
+        });
 
-    // Update button styles to show selected state
-    const buttons = document.querySelectorAll('.service-btn');
-    buttons.forEach(btn => {
-        btn.classList.remove('bg-pspl-gold/20', 'border-pspl-gold');
-        btn.classList.add('border-pspl-gold/50');
-    });
+        // Highlight selected button
+        event.target.classList.remove('border-pspl-gold/50');
+        event.target.classList.add('bg-pspl-gold/20', 'border-pspl-gold');
 
-    // Highlight selected button
-    event.target.classList.remove('border-pspl-gold/50');
-    event.target.classList.add('bg-pspl-gold/20', 'border-pspl-gold');
-
-    // Update WhatsApp link with selected service
-    const whatsappLink = document.getElementById('whatsappLink');
-    if (whatsappLink) {
-        let message = `Hi PSPL, I'm interested in ${service} services. Please provide me with more information about your ${service.toLowerCase()} restoration and polishing services.`;
-        whatsappLink.href = `https://wa.me/6597677169?text=${encodeURIComponent(message)}`;
-    }
-}
+        // Update WhatsApp link with selected service
+        const whatsappLink = document.getElementById('whatsappLink');
+        if (whatsappLink) {
+            let message = `Hi PSPL, I'm interested in ${service} services. Please provide me with more information about your ${service.toLowerCase()} restoration and polishing services.`;
+            whatsappLink.href = `https://wa.me/6597677169?text=${encodeURIComponent(message)}`;
+        }
+    };
 
 }); // End of DOMContentLoaded event listener
 
