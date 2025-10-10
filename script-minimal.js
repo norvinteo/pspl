@@ -162,6 +162,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, observerOptions);
 
+    // Helper function to observe new reveal elements
+    function observeRevealElements(elements) {
+        elements.forEach(el => {
+            if (el.classList.contains('reveal-on-scroll')) {
+                // Add initial state class instead of inline styles
+                el.classList.add('reveal-hidden');
+                observer.observe(el);
+            }
+        });
+    }
+
     // Observe reveal elements
     document.querySelectorAll('.reveal-on-scroll').forEach(el => {
         // Add initial state class instead of inline styles
@@ -610,7 +621,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Generate portfolio items from projectData
         projectData.forEach((project, index) => {
             const portfolioItem = document.createElement('div');
-            portfolioItem.className = 'portfolio-item group relative overflow-hidden rounded-lg shadow-lg cursor-pointer';
+            portfolioItem.className = 'portfolio-item group relative overflow-hidden rounded-lg shadow-lg cursor-pointer reveal-on-scroll';
             portfolioItem.setAttribute('data-category', project.category.toLowerCase());
             portfolioItem.setAttribute('data-project-id', project.title);
 
@@ -660,6 +671,12 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('About to call generatePortfolioHTML...');
     let portfolioItems = generatePortfolioHTML(); // Generate items dynamically
     console.log('generatePortfolioHTML returned:', portfolioItems ? portfolioItems.length : 'undefined');
+
+    // Observe newly created portfolio items for animations
+    if (portfolioItems && portfolioItems.length > 0) {
+        observeRevealElements(portfolioItems);
+        console.log('Portfolio items added to animation observer');
+    }
     const loadMoreBtn = document.getElementById('loadMoreBtn');
     let visibleItems = 9;
     let currentFilter = 'all';
