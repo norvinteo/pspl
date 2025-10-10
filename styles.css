@@ -79,6 +79,57 @@
     box-sizing: border-box;
 }
 
+/* Fix for Stone Consultation Services links */
+.expertise-section ul li a {
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 10 !important;
+    display: inline-block !important;
+    cursor: pointer !important;
+}
+
+/* Ensure card pseudo-element doesn't block clicks */
+.card::before {
+    pointer-events: none !important;
+}
+
+/* Certifications Section Styles */
+.certification-card {
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    background: var(--pspl-white);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    border: 1px solid #f3f4f6;
+}
+
+.certification-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--pspl-gold);
+}
+
+.certification-card img {
+    transition: all var(--transition-base);
+    filter: brightness(1) contrast(1);
+}
+
+.certification-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments for certifications */
+@media (max-width: 768px) {
+    .certification-card {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .certification-card img {
+        height: 80px !important;
+    }
+}
+
 html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
