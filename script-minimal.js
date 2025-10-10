@@ -271,116 +271,51 @@ document.addEventListener('DOMContentLoaded', function() {
         counterObserver.observe(counter);
     });
     
-    // Portfolio filtering
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-    let visibleItems = 9;
-    let currentFilter = 'all';
-    
-    // Initialize portfolio
-    function filterPortfolio(filter) {
-        currentFilter = filter;
-        let visibleCount = 0;
-        
-        portfolioItems.forEach((item, index) => {
-            const category = item.getAttribute('data-category');
-            const shouldShow = filter === 'all' || category.includes(filter);
-            
-            if (shouldShow) {
-                if (visibleCount < visibleItems) {
-                    item.style.display = 'block';
-                    item.classList.remove('hidden');
-                    visibleCount++;
-                    // Add staggered animation with classes instead of inline styles
-                    setTimeout(() => {
-                        item.classList.add('portfolio-visible');
-                    }, visibleCount * 50);
-                } else {
-                    item.style.display = 'none';
-                    item.classList.add('hidden');
-                }
-            } else {
-                item.style.display = 'none';
-                item.classList.add('hidden');
-            }
-        });
-        
-        // Show/hide load more button
-        if (loadMoreBtn) {
-            const totalMatching = Array.from(portfolioItems).filter(item => {
-                const category = item.getAttribute('data-category');
-                return filter === 'all' || category.includes(filter);
-            }).length;
-            
-            if (visibleItems < totalMatching) {
-                loadMoreBtn.style.display = 'inline-block';
-            } else {
-                loadMoreBtn.style.display = 'none';
-            }
-        }
-    }
-    
-    // Filter button click handlers
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Update active state
-            filterButtons.forEach(b => {
-                b.classList.remove('active', 'bg-pspl-red', 'text-white');
-                b.classList.add('border-2', 'border-gray-300');
-            });
-            this.classList.add('active', 'bg-pspl-red', 'text-white');
-            this.classList.remove('border-2', 'border-gray-300');
-            
-            // Reset visible items when changing filters
-            visibleItems = 9;
-            
-            // Apply filter
-            const filter = this.getAttribute('data-filter');
-            filterPortfolio(filter);
-        });
-    });
-    
-    // Load more button
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', function() {
-            visibleItems += 6;
-            filterPortfolio(currentFilter);
-            
-            // Check if we should hide the button after loading more
-            const totalMatching = Array.from(portfolioItems).filter(item => {
-                const category = item.getAttribute('data-category');
-                return currentFilter === 'all' || category.includes(currentFilter);
-            }).length;
-            
-            if (visibleItems >= totalMatching) {
-                loadMoreBtn.style.display = 'none';
-            }
-        });
-    }
-    
-    // Initialize portfolio on load
-    filterPortfolio('all');
-    
-    // Portfolio Modal
-    const modal = document.getElementById('portfolioModal');
-    let currentProjectIndex = 0;
-    let currentImageIndex = 0;
-    
-    // Project data with multiple images
+    // Project data with comprehensive details from portfolio markdown
     const projectData = [
         {
-            title: 'Capitol Tower Lobby',
+            title: 'Singapore Land Tower',
             category: 'Commercial • Marble',
             images: [
-                'images/Past Commercial Projects/Capital Tower.webp',
-                'images/Past Commercial Projects/Capital Tower 2.webp',
-                'images/Past Commercial Projects/Capital Tower 3.webp'
+                'images/Singapore Land Tower/IMG-0861.webp',
+                'images/Singapore Land Tower/IMG-0868.webp',
+                'images/Singapore Land Tower/IMG-4281.webp'
             ],
-            description: 'Complete restoration of 5,000 sqft Carrara marble lobby. This prestigious project involved meticulous restoration of imported Italian marble, bringing back its original luster and elegance.',
-            service: 'Marble Restoration & Polishing',
-            location: 'Robinson Road, CBD',
-            duration: '3 weeks'
+            description: 'An honor to be invited and took part in 2022 for SLT upgrading project. Re-polishing the ground lobby Thassos feature wall. One of the world most expensive marble. Managing harsh working condition like 7 levels scaffoldings with stringent safety requirements by the Japanese Main Contractor. A monumental project setting the highest standards and target for the company. Achievement!',
+            service: 'Marble Wall Maintenance Re-polishing',
+            client: 'Main Contractor',
+            material: 'Thassos Marble',
+            location: '50 Raffles Place, Singapore 048623',
+            duration: '2 weeks (night)'
+        },
+        {
+            title: 'Capital Tower',
+            category: 'Commercial • Marble',
+            images: [
+                'images/Capital Tower/Capital Tower 1.webp',
+                'images/Capital Tower/Capital Tower 2.webp',
+                'images/Capital Tower/Capital Tower 3.webp'
+            ],
+            description: 'Complete restoration of all lobbies marble floor to top shine, including elevator floor to privacy satin finish. This prestigious project involved meticulous planning with the building management to segment and cordon various lobby areas, and timely coordination with lift technician to secure the elevator(s). Seamless, with little to no interruption to operations and functions.',
+            service: 'Marble Floor Maintenance Re-polishing',
+            client: 'Building Management',
+            material: 'Marble',
+            location: '168 Robinson Road, Singapore 068912',
+            duration: '4 weeks'
+        },
+        {
+            title: 'Odette Restaurant',
+            category: 'Restaurant • Marble',
+            images: [
+                'images/Odette/Odette.webp',
+                'images/Past Commercial Projects/Odette.webp'
+            ],
+            description: 'A remarkable project, racing against time for the grand restaurant opening. The design theme, saw the re-creation of broken marble flooring which is at brink of lost craft. Great respect is taken to grind polish the floor, to honour the senior mason and their fine work of art.',
+            service: 'New Laid Marble Floor Polishing',
+            client: 'Main Contractor',
+            material: 'Broken Rosa Marble',
+            location: '1 St Andrew\'s Road, #01-04 National Gallery, Singapore 178957',
+            duration: '2 weeks'
         },
         {
             title: 'Club Street Heritage Shophouse',
@@ -399,13 +334,13 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '4 weeks'
         },
         {
-            title: 'An-Nahdhah Mosque',
+            title: 'An-Nahdhah Mosque Singapore',
             category: 'Heritage • Marble',
             images: [
-                'images/Past Commercial Projects/An-Nahdhah Mosque Singapore 0.webp',
-                'images/Past Commercial Projects/An-Nahdhah Mosque Singapore 1.webp', 
-                'images/Past Commercial Projects/An-Nahdhah Mosque Singapore 2.webp',
-                'images/Past Commercial Projects/An-Nahdhah Mosque Singapore 3.webp'
+                'images/An-Nahdhah Mosque Singapore/An-Nahdhah Mosque Singapore 0.webp',
+                'images/An-Nahdhah Mosque Singapore/An-Nahdhah Mosque Singapore 1.webp',
+                'images/An-Nahdhah Mosque Singapore/An-Nahdhah Mosque Singapore 2.webp',
+                'images/An-Nahdhah Mosque Singapore/An-Nahdhah Mosque Singapore 3.webp'
             ],
             description: 'Heritage building granite and marble restoration project. Careful restoration respecting religious significance and architectural heritage.',
             service: 'Granite & Marble Restoration',
@@ -413,12 +348,12 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '6 weeks'
         },
         {
-            title: 'MBFC Tower 3 Corporate Office',
+            title: 'Marina Bay Financial Tower 3',
             category: 'Commercial • Marble',
             images: [
-                'images/Director/MBFC Tower 3 close.webp',
-                'images/Director/MBFC Tower 3 far.webp',
-                'images/Past Commercial Projects/MBFC Tower 3.webp'
+                'images/MBFC Tower 3/MBFC Tower 3.webp',
+                'images/MBFC Tower 3/IMG_8146.webp',
+                'images/MBFC Tower 3/IMG_8161.webp'
             ],
             description: 'Grade A office building complete floor restoration. High-traffic commercial space requiring durable finish and minimal business disruption.',
             service: 'Commercial Marble Polishing',
@@ -612,7 +547,9 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Massimo Dutti VivoCity',
             category: 'Commercial • Marble',
             images: [
-                'images/Past Commercial Projects/Massimo Dutti VivoCity Store.webp'
+                'images/Massimo Dutti VivoCity Store/DSCF7932.webp',
+                'images/Massimo Dutti VivoCity Store/DSCF7938.webp',
+                'images/Massimo Dutti VivoCity Store/DSCF7954.webp'
             ],
             description: 'Luxury retail store flooring restoration. After-hours work to minimize business disruption for flagship store.',
             service: 'Retail Floor Restoration',
@@ -653,19 +590,160 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '5 weeks'
         }
     ];
-    
-    // Add click handlers to portfolio items
-    portfolioItems.forEach((item) => {
-        item.addEventListener('click', () => {
-            const projectId = item.getAttribute('data-project-id');
-            if (projectId) {
-                const projectIndex = projectData.findIndex(p => p.title === projectId);
-                if (projectIndex !== -1) {
-                    openModal(projectIndex);
+
+    // Generate portfolio HTML from projectData
+    function generatePortfolioHTML() {
+        const portfolioGrid = document.getElementById('portfolioGrid');
+        if (!portfolioGrid) return;
+
+        // Clear existing content
+        portfolioGrid.innerHTML = '';
+
+        // Generate portfolio items from projectData
+        projectData.forEach((project, index) => {
+            const portfolioItem = document.createElement('div');
+            portfolioItem.className = 'portfolio-item group relative overflow-hidden rounded-lg shadow-lg cursor-pointer';
+            portfolioItem.setAttribute('data-category', project.category.toLowerCase());
+            portfolioItem.setAttribute('data-project-id', project.title);
+
+            portfolioItem.innerHTML = `
+                <div class="aspect-square overflow-hidden bg-gray-100">
+                    <img src="${project.images[0]}"
+                         alt="${project.title}"
+                         loading="lazy"
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-pspl-dark/90 via-pspl-dark/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <h4 class="text-lg font-bold mb-2">${project.title}</h4>
+                        <p class="text-sm text-gray-300">${project.category}</p>
+                        <p class="text-xs text-pspl-gold mt-2 opacity-0 group-hover:opacity-100 transition-opacity delay-100">Click to view details</p>
+                    </div>
+                </div>
+            `;
+
+            portfolioGrid.appendChild(portfolioItem);
+        });
+
+        // Re-select portfolio items after generation
+        const newPortfolioItems = document.querySelectorAll('.portfolio-item');
+
+        // Add click handlers to new portfolio items
+        newPortfolioItems.forEach((item) => {
+            item.addEventListener('click', () => {
+                const projectId = item.getAttribute('data-project-id');
+                if (projectId) {
+                    const projectIndex = projectData.findIndex(p => p.title === projectId);
+                    if (projectIndex !== -1) {
+                        openModal(projectIndex);
+                    }
                 }
+            });
+        });
+
+        return newPortfolioItems;
+    }
+
+    // Portfolio filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    let portfolioItems = generatePortfolioHTML(); // Generate items dynamically
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    let visibleItems = 9;
+    let currentFilter = 'all';
+    
+    // Initialize portfolio
+    function filterPortfolio(filter) {
+        currentFilter = filter;
+        let visibleCount = 0;
+
+        // Refresh portfolio items reference
+        portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        portfolioItems.forEach((item, index) => {
+            const category = item.getAttribute('data-category');
+            const shouldShow = filter === 'all' || category.includes(filter);
+            
+            if (shouldShow) {
+                if (visibleCount < visibleItems) {
+                    item.style.display = 'block';
+                    item.classList.remove('hidden');
+                    visibleCount++;
+                    // Add staggered animation with classes instead of inline styles
+                    setTimeout(() => {
+                        item.classList.add('portfolio-visible');
+                    }, visibleCount * 50);
+                } else {
+                    item.style.display = 'none';
+                    item.classList.add('hidden');
+                }
+            } else {
+                item.style.display = 'none';
+                item.classList.add('hidden');
             }
         });
+        
+        // Show/hide load more button
+        if (loadMoreBtn) {
+            const totalMatching = Array.from(portfolioItems).filter(item => {
+                const category = item.getAttribute('data-category');
+                return filter === 'all' || category.includes(filter);
+            }).length;
+            
+            if (visibleItems < totalMatching) {
+                loadMoreBtn.style.display = 'inline-block';
+            } else {
+                loadMoreBtn.style.display = 'none';
+            }
+        }
+    }
+    
+    // Filter button click handlers
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Update active state
+            filterButtons.forEach(b => {
+                b.classList.remove('active', 'bg-pspl-red', 'text-white');
+                b.classList.add('border-2', 'border-gray-300');
+            });
+            this.classList.add('active', 'bg-pspl-red', 'text-white');
+            this.classList.remove('border-2', 'border-gray-300');
+            
+            // Reset visible items when changing filters
+            visibleItems = 9;
+            
+            // Apply filter
+            const filter = this.getAttribute('data-filter');
+            filterPortfolio(filter);
+        });
     });
+    
+    // Load more button
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function() {
+            visibleItems += 6;
+            filterPortfolio(currentFilter);
+            
+            // Check if we should hide the button after loading more
+            const totalMatching = Array.from(portfolioItems).filter(item => {
+                const category = item.getAttribute('data-category');
+                return currentFilter === 'all' || category.includes(currentFilter);
+            }).length;
+            
+            if (visibleItems >= totalMatching) {
+                loadMoreBtn.style.display = 'none';
+            }
+        });
+    }
+    
+    // Initialize portfolio on load
+    filterPortfolio('all');
+    
+    // Portfolio Modal
+    const modal = document.getElementById('portfolioModal');
+    let currentProjectIndex = 0;
+    let currentImageIndex = 0;
+
+    // Portfolio click handlers are now managed in generatePortfolioHTML function
     
     window.openModal = function(index) {
         currentProjectIndex = index;
@@ -908,6 +986,8 @@ function selectService(service) {
         whatsappLink.href = `https://wa.me/6597677169?text=${encodeURIComponent(message)}`;
     }
 }
+
+}); // End of DOMContentLoaded event listener
 
 function openWhatsApp() {
     const message = "Hi PSPL, I'm interested in your stone and parquet restoration services.";
