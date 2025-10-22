@@ -283,17 +283,19 @@ document.addEventListener('DOMContentLoaded', function() {
         counterObserver.observe(counter);
     });
     
-    // Project data with comprehensive details from portfolio markdown
+    // Updated Project data with new portfolio structure and content from pspl_website_content_3rd_edit.md
     const projectData = [
+        // Commercial Projects
         {
             title: 'Singapore Land Tower',
             category: 'Commercial • Marble',
             images: [
-                'images/Singapore Land Tower/IMG-0861.webp',
-                'images/Singapore Land Tower/IMG-0868.webp',
-                'images/Singapore Land Tower/IMG-4281.webp'
+                'images/portfolio/commercial/singapore-land-tower/1.webp',
+                'images/portfolio/commercial/singapore-land-tower/2.webp',
+                'images/portfolio/commercial/singapore-land-tower/3.webp',
+                'images/portfolio/commercial/singapore-land-tower/4.webp'
             ],
-            description: 'An honor to be invited and took part in 2022 for SLT upgrading project. Re-polishing the ground lobby Thassos feature wall. One of the world most expensive marble. Managing harsh working condition like 7 levels scaffoldings with stringent safety requirements by the Japanese Main Contractor. A monumental project setting the highest standards and target for the company. Achievement!',
+            description: 'An honor to be invited and took part in 2022 for SLT upgrading project. Re-polishing the ground lobby Thassos feature wall. One of the world most expensive marble. Managing harsh working condition like 7 levels scaffoldings with stringent safety requirements by the Japanese Main Contractor. A signature project setting the tallest standards and target for the company. Achievement!',
             service: 'Marble Wall Maintenance Re-polishing',
             client: 'Main Contractor',
             material: 'Thassos Marble',
@@ -304,302 +306,375 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Capital Tower',
             category: 'Commercial • Marble',
             images: [
-                'images/Capital Tower/Capital Tower 1.webp',
-                'images/Capital Tower/Capital Tower 2.webp',
-                'images/Capital Tower/Capital Tower 3.webp'
+                'images/portfolio/commercial/capital-tower/1.webp',
+                'images/portfolio/commercial/capital-tower/2.webp',
+                'images/portfolio/commercial/capital-tower/3.webp',
+                'images/portfolio/commercial/capital-tower/4.webp'
             ],
             description: 'Complete restoration of all lobbies marble floor to top shine, including elevator floor to privacy satin finish. This prestigious project involved meticulous planning with the building management to segment and cordon various lobby areas, and timely coordination with lift technician to secure the elevator(s). Seamless, with little to no interruption to operations and functions.',
             service: 'Marble Floor Maintenance Re-polishing',
             client: 'Building Management',
-            material: 'Marble',
+            material: 'Mahkam Dark Brown Marble',
             location: '168 Robinson Road, Singapore 068912',
             duration: '4 weeks'
         },
         {
-            title: 'Odette Restaurant',
-            category: 'Restaurant • Marble',
+            title: 'An-Nahdhah Mosque Singapore',
+            category: 'Commercial • Marble',
             images: [
-                'images/Odette/Odette.webp',
-                'images/Past Commercial Projects/Odette.webp'
+                'images/portfolio/commercial/an-nahdhah-mosque/1.webp',
+                'images/portfolio/commercial/an-nahdhah-mosque/2.webp',
+                'images/portfolio/commercial/an-nahdhah-mosque/3.webp',
+                'images/portfolio/commercial/an-nahdhah-mosque/4.webp'
             ],
-            description: 'A remarkable project, racing against time for the grand restaurant opening. The design theme, saw the re-creation of broken marble flooring which is at brink of lost craft. Great respect is taken to grind polish the floor, to honour the senior mason and their fine work of art.',
+            description: 'Sanding repolishing of the Qibla wall, black marble stone layered over 8 levels of scaffolding. A sacred moment and our crew took the utmost pride in reburnishing the stone back to its former glory.',
+            service: 'Marble Wall Maintenance Re-polishing',
+            client: 'Building Management',
+            material: 'Pietra Grey Marble',
+            location: '9A Bishan Street 14, Singapore 579786',
+            duration: '2 weeks'
+        },
+        {
+            title: 'Marina Bay Financial Tower 3',
+            category: 'Commercial • Floor',
+            images: [
+                'images/portfolio/commercial/mbfc-tower-3/1.webp',
+                'images/portfolio/commercial/mbfc-tower-3/2.webp',
+                'images/portfolio/commercial/mbfc-tower-3/3.webp',
+                'images/portfolio/commercial/mbfc-tower-3/4.webp'
+            ],
+            description: 'Electrostatic discharge raised steel floor\'s carpet adhesive removal polishing. Main aim of the project is to lower cost for client to avoid mass replacement of the ESD raised floor. Mock ups are done and approved by building management. In order to determine the most suitable chemicals for the enclosed office environment and centralized air-conditioning system, with low odour emission and non-corrosive formula. Our team worked around the clock for the 13,000 square feet to be handed over to the building management on time.',
+            service: 'Office Raised Floor Adhesive Removal',
+            client: 'Main Contractor',
+            material: 'ESD Raised Floor',
+            location: '12 Marina Boulevard, Singapore 018982',
+            duration: '6 days'
+        },
+        {
+            title: 'Massimo Dutti Vivocity Store',
+            category: 'Commercial • Marble',
+            images: [
+                'images/portfolio/commercial/massimo-dutti-vivocity/1.webp',
+                'images/portfolio/commercial/massimo-dutti-vivocity/2.webp',
+                'images/portfolio/commercial/massimo-dutti-vivocity/3.webp',
+                'images/portfolio/commercial/massimo-dutti-vivocity/4.webp'
+            ],
+            description: 'Herringbone tiling pattern, pushes the physical limit of craftsmen especially at the initial phase of grinding, to sort out the lippage of the smaller than usual size marble. Ensuring all corners and edges afloat, while maintaining the levelness of the surface. Truly our signature art piece.',
             service: 'New Laid Marble Floor Polishing',
             client: 'Main Contractor',
-            material: 'Broken Rosa Marble',
+            material: 'Super Cantik Marble',
+            location: '1 HarbourFront Walk #01-189 Centro Commercial Vivocity, Singapore 098585',
+            duration: '2 weeks'
+        },
+        {
+            title: 'Tee International Limited',
+            category: 'Commercial • Marble',
+            images: [
+                'images/portfolio/commercial/tee-international/1.webp',
+                'images/portfolio/commercial/tee-international/2.webp',
+                'images/portfolio/commercial/tee-international/3.webp',
+                'images/portfolio/commercial/tee-international/4.webp'
+            ],
+            description: 'First impressions matter. Emphasis is place to achieve superior quality result, to ensure a welcoming lobby space ready to impress visitors. All craftsmen are experienced to handle handheld polisher on mobile scaffolding.',
+            service: 'Main Lobby Maintenance Marble Feature Wall Re-polishing, Granite Floor Buffing',
+            client: 'Building Management',
+            material: 'Venus White Marble, Sierra Grey Granite',
+            location: '25 Bukit Batok Street 22, Singapore 659591',
+            duration: '3 days'
+        },
+        {
+            title: 'St Joseph\'s Home Singapore',
+            category: 'Commercial • Granite',
+            images: [
+                'images/portfolio/commercial/st-josephs-home/1.webp',
+                'images/portfolio/commercial/st-josephs-home/2.webp',
+                'images/portfolio/commercial/st-josephs-home/3.webp',
+                'images/portfolio/commercial/st-josephs-home/4.webp'
+            ],
+            description: 'Restoring pride and shine to the igneous granite rock floor, to this place of worship. Proper understanding of natural stone enables our crew to tackle various issue like oil/rust stain, blemish, worn shine...',
+            service: 'Chapel Floor Granite Buffing',
+            client: 'Building Management',
+            material: 'Camellia Pink Granite',
+            location: '36 Jurong West Street 24, Singapore 648141',
+            duration: '2 days'
+        },
+        {
+            title: 'Healthway at OUE Downtown 2',
+            category: 'Commercial • Marble',
+            images: [
+                'images/portfolio/commercial/healthway-oue-downtown/1.webp',
+                'images/portfolio/commercial/healthway-oue-downtown/2.webp',
+                'images/portfolio/commercial/healthway-oue-downtown/3.webp',
+                'images/portfolio/commercial/healthway-oue-downtown/4.webp'
+            ],
+            description: 'Elevating guest experience is priority. A favorite marble in residential, house in a commercial lobby requires similar attention to details. Acknowledging the high absorption nature of this porous marble, we had responded with finest sponge grind diamond abrasive to refine and close the pores of the stone. In addition, a USA sealer application to better protect against liquid stains and dirt.',
+            service: 'Main Lobby Maintenance Marble Floor Re-polishing',
+            client: 'Anchor Tenant',
+            material: 'White Volakas Marble',
+            location: '6 Shenton Way, OUE Downtown 2, Singapore 068809',
+            duration: '2 days'
+        },
+        {
+            title: 'One Devonshire Condominium',
+            category: 'Commercial • Granite',
+            images: [
+                'images/portfolio/commercial/one-devonshire/IMG_1718.webp',
+                'images/portfolio/commercial/one-devonshire/IMG_1722.webp',
+                'images/portfolio/commercial/one-devonshire/IMG_1788.webp',
+                'images/portfolio/commercial/one-devonshire/IMG_1805.webp'
+            ],
+            description: 'Driveway entrance, water feature granite had its surface stripped by harsh chlorine bleach. Proposed re-surfacing with chemical buffing to re-attain the stone former glory.',
+            service: 'Granite Water Feature Restoration',
+            client: 'MCST',
+            material: 'Jet Black Granite',
+            location: '1 Devonshire Road, Singapore 239896',
+            duration: '3 days'
+        },
+        {
+            title: 'Welcia at Suntec City',
+            category: 'Commercial • Corian',
+            images: [
+                'images/portfolio/commercial/welcia-suntec/1.webp',
+                'images/portfolio/commercial/welcia-suntec/2.webp',
+                'images/portfolio/commercial/welcia-suntec/3.webp',
+                'images/portfolio/commercial/welcia-suntec/4.webp'
+            ],
+            description: 'Repair and restore the countertop, injecting a new life to the furniture.',
+            service: 'Corian Top Sanding and Buffing to Shine',
+            client: 'Main Contractor',
+            material: 'Corian (Acrylic) Top',
+            location: '8 Temasek Boulevard Suntec Mall Tower, Singapore 038988',
+            duration: '1 day'
+        },
+        {
+            title: 'Courtyard Singapore Novena',
+            category: 'Commercial • Hotel',
+            images: [
+                'images/portfolio/commercial/courtyard-singapore-novena/1.webp',
+                'images/portfolio/commercial/courtyard-singapore-novena/2.webp',
+                'images/portfolio/commercial/courtyard-singapore-novena/3.webp',
+                'images/portfolio/commercial/courtyard-singapore-novena/4.webp'
+            ],
+            description: 'Allocated night job with the lowest foot traffic to ensure the least disturbance to hotel guest. Proper protection setup to shield the surrounding features from the slurry and chemicals. Swift and sequential, for a job well done in a timeliness manner.',
+            service: 'Elevator Floor Marble Re-polishing',
+            client: 'Housekeeping',
+            material: 'Zebrano Marble',
+            location: '99 Irrawaddy Road, Singapore 329568',
+            duration: '3 nights'
+        },
+        {
+            title: 'The Clearwater Condominium',
+            category: 'Commercial • Marble',
+            images: [
+                'images/portfolio/commercial/clearwater-condominium/1.webp',
+                'images/portfolio/commercial/clearwater-condominium/2.webp',
+                'images/portfolio/commercial/clearwater-condominium/3.webp',
+                'images/portfolio/commercial/clearwater-condominium/4.webp'
+            ],
+            description: 'Built in 2002, restoring the marble at lift lobby wall has its fair share of challenges. Decades of collected dirt, loss of shine and adhesive residue. We had to tailor the polishing formula accordingly without interrupting the full operations of the lifts and residents.',
+            service: 'Lift Lobby Marble Cleaning & Waxing',
+            client: 'Cleaning Maintenance Company',
+            material: 'Jaisalmer Yellow Marble',
+            location: '2 Bedok Reservoir View, Singapore 479232',
+            duration: '1 week'
+        },
+
+        // Restaurant Projects
+        {
+            title: 'Odette',
+            category: 'Restaurant • Marble',
+            images: [
+                'images/portfolio/restaurant/odette/1.webp',
+                'images/portfolio/restaurant/odette/2.webp',
+                'images/portfolio/restaurant/odette/3.webp',
+                'images/portfolio/restaurant/odette/4.webp'
+            ],
+            description: 'A remarkable project, racing against time for the grand restaurant opening. The design theme, saw the re-creation of broken marble flooring which is at brink of lost craft. In honor of the senior masons and their fine work of art, great respect is taken to meticulously grind polish the floor, unleashing the beauty within.',
+            service: 'New Laid Marble Floor Polishing',
+            client: 'Main Contractor',
+            material: 'Broken White Volakas Marble',
             location: '1 St Andrew\'s Road, #01-04 National Gallery, Singapore 178957',
             duration: '2 weeks'
         },
         {
-            title: 'Club Street Heritage Shophouse',
-            category: 'Heritage • Parquet',
+            title: 'Altro Zafferano at Ocean Financial Centre',
+            category: 'Restaurant • Marble',
             images: [
-                'images/Club Street (Conservation Shophouse)/448278798_433793449414424_4873724001410576323_n.webp',
-                'images/Club Street (Conservation Shophouse)/448298042_433793152747787_2523218675767481178_n.webp',
-                'images/Club Street (Conservation Shophouse)/482006553_613025684824532_251287033583453409_n.webp',
-                'images/Club Street (Conservation Shophouse)/482022469_613025981491169_7293032783404152723_n.webp',
-                'images/Club Street (Conservation Shophouse)/482024263_613025648157869_825824160076031021_n.webp',
-                'images/Club Street (Conservation Shophouse)/482051541_613025624824538_4130782867625009332_n.webp'
+                'images/portfolio/restaurant/altro-zafferano/1.webp',
+                'images/portfolio/restaurant/altro-zafferano/2.webp',
+                'images/portfolio/restaurant/altro-zafferano/3.webp',
+                'images/portfolio/restaurant/altro-zafferano/4.webp'
             ],
-            description: '1920s teak parquet flooring brought back to original glory. Heritage conservation project requiring specialized techniques to preserve historical authenticity.',
-            service: 'Parquet Restoration & Conservation',
-            location: 'Club Street, Chinatown',
-            duration: '4 weeks'
+            description: 'Severely scratched (stun marks) marble are tackle with quality diamond abrasive for optimal result. Leaving no traces of "potholes". Allocated hours before the restaurant opening had us place standby, both manpower and machines to ensure zero room for error.',
+            service: 'Marble Stun Marks Restoration',
+            client: 'Contractor',
+            material: 'Marble',
+            location: '10 Collyer Quay, Level 43, Singapore 049315',
+            duration: '1 day'
         },
         {
-            title: 'An-Nahdhah Mosque Singapore',
+            title: 'SPRUCE @ HillV2',
+            category: 'Restaurant • Marble',
+            images: [
+                'images/portfolio/restaurant/spruce-hillv2/1.webp',
+                'images/portfolio/restaurant/spruce-hillv2/2.webp',
+                'images/portfolio/restaurant/spruce-hillv2/3.webp',
+                'images/portfolio/restaurant/spruce-hillv2/4.webp'
+            ],
+            description: 'From countertop, salad bar to flooring, the versatile and eye-pleasing White Volakas was deployed at various parts of the restaurant. Mother Nature\'s impressive build of marble truly stands out, as the stone is capable to undertake proper resurfacing on site for a revitalized restaurant appearance. Ready to open its door to diners!',
+            service: 'Maintenance Marble Floor Re-polishing',
+            client: 'Main Contractor',
+            material: 'White Volakas Marble',
+            location: '4 Hillview Rise, #01-01 HillV2, Singapore 667979',
+            duration: '4 days'
+        },
+        {
+            title: 'Senso Ristorante & Bar',
+            category: 'Restaurant • Marble',
+            images: [
+                'images/portfolio/restaurant/senso-club-street/1.webp',
+                'images/portfolio/restaurant/senso-club-street/2.webp',
+                'images/portfolio/restaurant/senso-club-street/3.webp',
+                'images/portfolio/restaurant/senso-club-street/4.webp'
+            ],
+            description: 'Highly valued for its decorative appearance, the Onyx stone is carefully constructed with embedded lighting to unleash the beauty. Our crew put their heart and soul into refurnishing the piece of art.',
+            service: 'Maintenance Marble Bar Top Re-polishing',
+            client: 'Tenant',
+            material: 'Onyx Marble',
+            location: '21 Club Street, Singapore 069410',
+            duration: '1 day'
+        },
+        {
+            title: 'Fu Lin Men Cantonese Dining at Chinese Swimming Club',
+            category: 'Restaurant • Porcelain',
+            images: [
+                'images/portfolio/restaurant/chinese-swimming-club/1.webp',
+                'images/portfolio/restaurant/chinese-swimming-club/2.webp',
+                'images/portfolio/restaurant/chinese-swimming-club/3.webp',
+                'images/portfolio/restaurant/chinese-swimming-club/4.webp'
+            ],
+            description: 'Heavy foot traffic worn the top coat of the porcelain tiles, resulting in collected dirt. Our sequential formula effectively cleans the blemishes, then buff to restore the shine. A tighter surface pores, for a longer lasting shine.',
+            service: 'Porcelain Machine Chemical Buffing',
+            client: 'Main Contractor',
+            material: 'Porcelain',
+            location: '21 Amber Road, Chinese Swimming Club, Singapore 439870',
+            duration: '1 day'
+        },
+        {
+            title: 'Marina Bay Sands',
+            category: 'Restaurant • Homogenous',
+            images: [
+                'images/portfolio/restaurant/mbs-restaurant/1.webp',
+                'images/portfolio/restaurant/mbs-restaurant/2.webp',
+                'images/portfolio/restaurant/mbs-restaurant/3.webp',
+                'images/portfolio/restaurant/mbs-restaurant/4.webp'
+            ],
+            description: 'Homogenous tile machine chemical buffing to clean and importantly reinstate the glow back to the stone. Ready to serve its new tenant.',
+            service: 'Homogenous Tile Machine Chemical Buffing',
+            client: 'Designer',
+            material: 'Homogenous',
+            location: '10 Bayfront Avenue, Singapore 018956',
+            duration: '1 day'
+        },
+
+        // Heritage Projects
+        {
+            title: 'Mount Pleasant Drive',
             category: 'Heritage • Marble',
             images: [
-                'images/An-Nahdhah Mosque Singapore/An-Nahdhah Mosque Singapore 0.webp',
-                'images/An-Nahdhah Mosque Singapore/An-Nahdhah Mosque Singapore 1.webp',
-                'images/An-Nahdhah Mosque Singapore/An-Nahdhah Mosque Singapore 2.webp',
-                'images/An-Nahdhah Mosque Singapore/An-Nahdhah Mosque Singapore 3.webp'
+                'images/portfolio/heritage/mount-pleasant-drive/2.webp',
+                'images/portfolio/heritage/mount-pleasant-drive/3.webp',
+                'images/portfolio/heritage/mount-pleasant-drive/4.webp',
+                'images/portfolio/heritage/mount-pleasant-drive/5.webp'
             ],
-            description: 'Heritage building granite and marble restoration project. Careful restoration respecting religious significance and architectural heritage.',
-            service: 'Granite & Marble Restoration',
-            location: 'Bishan',
-            duration: '6 weeks'
+            description: 'This monumental conservation construction is often a site for filming. Our team went over and beyond to ensure the flooring is ready to dazzle for its next shoot and/or tenant.',
+            service: 'Marble Floor Maintenance Re-polishing',
+            client: 'Heritage Conservation',
+            material: 'White Volakas Marble, Jet Black Granite',
+            location: 'Mount Pleasant Drive',
+            duration: '5 days'
         },
         {
-            title: 'Marina Bay Financial Tower 3',
-            category: 'Commercial • Marble',
+            title: 'Everitt Road',
+            category: 'Heritage • Shophouse',
             images: [
-                'images/MBFC Tower 3/MBFC Tower 3.webp',
-                'images/MBFC Tower 3/IMG_8146.webp',
-                'images/MBFC Tower 3/IMG_8161.webp'
+                'images/portfolio/heritage/everitt-road-shophouse/1.webp',
+                'images/portfolio/heritage/everitt-road-shophouse/2.webp',
+                'images/portfolio/heritage/everitt-road-shophouse/3.webp',
+                'images/portfolio/heritage/everitt-road-shophouse/4.webp'
             ],
-            description: 'Grade A office building complete floor restoration. High-traffic commercial space requiring durable finish and minimal business disruption.',
-            service: 'Commercial Marble Polishing',
-            location: 'Marina Bay Financial Centre',
-            duration: '2 weeks'
+            description: 'Workmanship of such fine build quality are rare. Crucial for craftsmen to preserve and take extreme care in every procedure from establishing protection to the layered polishing itself. Truly deserving!',
+            service: 'Marble Floor Maintenance Re-polishing',
+            client: 'Heritage Conservation',
+            material: 'Super Cantik Marble',
+            location: 'Everitt Road, Singapore 428523',
+            duration: '1 day'
         },
         {
-            title: 'Mount Pleasant British Colonial',
-            category: 'Heritage • Parquet',
+            title: 'Club Street',
+            category: 'Heritage • Wood',
             images: [
-                'images/Mount Pleasant Drive (British Colonial Bungalow)/474780228_1030991615504889_3680595854844797641_n.webp',
-                'images/Mount Pleasant Drive (British Colonial Bungalow)/474948924_1031572122113505_647399842813823570_n.webp',
-                'images/Mount Pleasant Drive (British Colonial Bungalow)/474950949_1031571888780195_1956536929514562494_n.webp',
-                'images/Mount Pleasant Drive (British Colonial Bungalow)/474951409_1031572265446824_1251717352116059604_n.webp',
-                'images/Mount Pleasant Drive (British Colonial Bungalow)/475133154_1031571885446862_1037691665932825306_n.webp'
+                'images/portfolio/heritage/club-street-shophouse/1.webp',
+                'images/portfolio/heritage/club-street-shophouse/2.webp',
+                'images/portfolio/heritage/club-street-shophouse/3.webp',
+                'images/portfolio/heritage/club-street-shophouse/4.webp'
             ],
-            description: 'British colonial bungalow parquet restoration. Preserving the character of original 1930s teak flooring with modern protective treatments.',
-            service: 'Heritage Parquet Restoration',
-            location: 'Mount Pleasant',
-            duration: '5 weeks'
+            description: 'Chengal decked upper storey, architectural construction possesses constant movement, resulting in challenges during sanding and gap filling. A tailored formula, to achieve result worthy of its conservation status.',
+            service: 'Chengal Wood Light Sand, Stain, Waterbased Topcoat',
+            client: 'Conservation Shophouse',
+            material: 'Chengal Wood',
+            location: 'Club Street, Singapore 069440',
+            duration: '1 day'
         },
         {
-            title: 'SPRUCE @ HillV2 Restaurant',
-            category: 'Commercial',
+            title: 'Swettenham Road',
+            category: 'Heritage • Terrazzo',
             images: [
-                'images/SPRUCE @ HillV2/342373522_602371615188445_51024111921149826_n.webp',
-                'images/SPRUCE @ HillV2/342886339_3293969534248570_1227976711564094349_n.webp',
-                'images/SPRUCE @ HillV2/473240813_1022155863055131_8558920594352500842_n.webp',
-                'images/SPRUCE @ HillV2/473242865_1022155776388473_7705070839304022129_n.webp',
-                'images/SPRUCE @ HillV2/473336533_1022155803055137_557286468691945205_n.webp'
+                'images/portfolio/heritage/swettenham-road-bungalow/1.webp',
+                'images/portfolio/heritage/swettenham-road-bungalow/2.webp',
+                'images/portfolio/heritage/swettenham-road-bungalow/3.webp',
+                'images/portfolio/heritage/swettenham-road-bungalow/4.webp'
             ],
-            description: 'Fine dining restaurant floor restoration. Creating elegant ambiance through expertly restored natural stone surfaces.',
-            service: 'Restaurant Floor Restoration',
-            location: 'HillV2, Sembawang',
-            duration: '10 days'
-        },
-        {
-            title: 'Swettenham Colonial Bungalow',
-            category: 'Heritage • Parquet',
-            images: [
-                'images/Swettenham Road (British Colonial Bungalow)/DSCF2260.webp',
-                'images/Swettenham Road (British Colonial Bungalow)/DSCF2268.webp',
-                'images/Swettenham Road (British Colonial Bungalow)/DSCF2370.webp',
-                'images/Swettenham Road (British Colonial Bungalow)/DSCF2384.webp',
-                'images/Swettenham Road (British Colonial Bungalow)/497738855_3908102889452751_9046911962136653947_n.webp'
-            ],
-            description: 'Comprehensive restoration of heritage parquet flooring in protected conservation bungalow. Museum-quality restoration techniques employed.',
-            service: 'Conservation Parquet Restoration',
-            location: 'Swettenham Road',
-            duration: '7 weeks'
-        },
-        {
-            title: 'Odette Restaurant',
-            category: 'Commercial • Marble',
-            images: [
-                'images/Past Commercial Projects/Odette.webp'
-            ],
-            description: 'Michelin-starred restaurant marble restoration. Precision work ensuring flawless finish for Singapore\'s premier dining establishment.',
-            service: 'Fine Dining Floor Restoration',
-            location: 'National Gallery Singapore',
-            duration: '2 weeks'
-        },
-        {
-            title: 'Everitt Road Conservation',
-            category: 'Heritage • Parquet',
-            images: [
-                'images/Everitt Road (Conservation Shophouse)/IMG_9303.webp',
-                'images/Everitt Road (Conservation Shophouse)/IMG_9305.webp',
-                'images/Everitt Road (Conservation Shophouse)/IMG_9306.webp',
-                'images/Everitt Road (Conservation Shophouse)/IMG_9307.webp',
-                'images/Everitt Road (Conservation Shophouse)/IMG_9310.webp'
-            ],
-            description: 'Conservation shophouse complete parquet restoration. Balancing heritage preservation with modern living requirements.',
-            service: 'Shophouse Parquet Restoration',
-            location: 'Everitt Road, Little India',
-            duration: '4 weeks'
-        },
-        {
-            title: 'Bukit Timah Stone Analysis',
-            category: 'Consultation • Stone Analysis',
-            images: [
-                'images/Stone Consultation Inspection/Bukit Timah.webp'
-            ],
-            description: 'Comprehensive stone defect analysis for luxury residence. Detailed assessment of marble deterioration, staining patterns, and structural integrity with restoration recommendations.',
-            service: 'Stone Defect Analysis & Consultation',
-            location: 'Bukit Timah',
-            duration: '2 days consultation'
-        },
-        {
-            title: 'Camborne Road Marble Inspection',
-            category: 'Consultation • Stone Analysis',
-            images: [
-                'images/Stone Consultation Inspection/Camborne Road.webp'
-            ],
-            description: 'Expert marble surface inspection and quality assessment. Identified causes of discoloration and provided detailed restoration plan with cost estimates.',
-            service: 'Stone Defect Analysis & Consultation',
-            location: 'Camborne Road',
-            duration: '1 day consultation'
-        },
-        {
-            title: 'River Valley Defect Analysis',
-            category: 'Consultation • Stone Analysis',
-            images: [
-                'images/Stone Consultation Inspection/River Valley.webp'
-            ],
-            description: 'Professional stone defect diagnosis for condominium common areas. Comprehensive report on water damage, efflorescence, and preventive maintenance strategies.',
-            service: 'Stone Defect Analysis & Consultation',
-            location: 'River Valley',
-            duration: '3 days consultation'
-        },
-        {
-            title: 'Sungei Kadut Industrial Assessment',
-            category: 'Consultation • Stone Analysis',
-            images: [
-                'images/Stone Consultation Inspection/Sungei Kadut.webp'
-            ],
-            description: 'Industrial facility floor assessment for heavy-duty applications. Analysis of wear patterns, chemical damage, and recommendations for industrial-grade restoration.',
-            service: 'Stone Defect Analysis & Consultation',
-            location: 'Sungei Kadut',
-            duration: '2 days consultation'
-        },
-        {
-            title: 'The Avenir Luxury Consultation',
-            category: 'Consultation • Stone Analysis',
-            images: [
-                'images/Stone Consultation Inspection/The Avenir.webp'
-            ],
-            description: 'Premium condominium marble consultation service. Expert analysis of imported stone varieties with specialized care recommendations for long-term preservation.',
-            service: 'Stone Defect Analysis & Consultation',
-            location: 'River Valley',
-            duration: '2 days consultation'
-        },
-        {
-            title: 'Treasure @ Tampines Analysis',
-            category: 'Consultation • Stone Analysis',
-            images: [
-                'images/Stone Consultation Inspection/Treasure @ Tampines.webp'
-            ],
-            description: 'Large-scale residential development stone assessment. Evaluation of common area marble installations with preventive maintenance program development.',
-            service: 'Stone Defect Analysis & Consultation',
-            location: 'Tampines',
-            duration: '4 days consultation'
-        },
-        {
-            title: 'OUE Downtown 2',
-            category: 'Commercial • Marble',
-            images: [
-                'images/Past Commercial Projects/OUE Downtown 2.webp',
-                'images/Past Commercial Projects/OUE Downtown 2 b.webp',
-                'images/Past Commercial Projects/OUE Downtown 2 c.webp'
-            ],
-            description: 'Premium office tower marble restoration. Complete restoration of lobby and common areas maintaining Grade A office standards.',
-            service: 'Commercial Marble Restoration',
-            location: 'Shenton Way',
-            duration: '3 weeks'
-        },
-        {
-            title: 'Altro Zafferano Restaurant',
-            category: 'Commercial • Marble',
-            images: [
-                'images/Past Commercial Projects/Altro Zafferano 10 Collyer Quay, Level 43, Singapore 049315.webp'
-            ],
-            description: 'Luxury rooftop restaurant marble restoration. Precision polishing for high-end dining establishment with panoramic city views.',
-            service: 'Fine Dining Floor Restoration',
-            location: 'Collyer Quay',
+            description: 'Our team felt extreme pride and joy in restoring the terrazzo for the conservation bungalow constructed before Singapore\'s independence. Huge honor and pleasure to serve the foreign ambassador.',
+            service: 'Terrazzo Re-polishing',
+            client: 'British Colonial Bungalow',
+            material: 'Terrazzo',
+            location: 'Swettenham Road, Singapore 248075',
             duration: '1 week'
         },
+
+        // Consultation Projects
         {
-            title: 'Chinese Swimming Club',
-            category: 'Commercial • Marble',
+            title: 'The Avenir',
+            category: 'Consultation • Inspection',
             images: [
-                'images/Past Commercial Projects/Chinese Swimming Club.webp'
+                'images/portfolio/consultation/stone-consultation-inspection/2)-the-avenir-1.webp',
+                'images/portfolio/consultation/stone-consultation-inspection/2)-the-avenir-2.webp',
+                'images/portfolio/consultation/stone-consultation-inspection/2)-the-avenir-3.webp',
+                'images/portfolio/consultation/stone-consultation-inspection/2)-the-avenir-4.webp'
             ],
-            description: 'Historic private club comprehensive restoration. Poolside and indoor marble surfaces restored to pristine condition.',
-            service: 'Club Facility Restoration',
-            location: 'Amber Road',
-            duration: '4 weeks'
+            description: 'In collaboration with renowned local defect inspection company, we assisted multiple new homeowners to achieve deserving quality their new marble should possess. From stun marks, irregular grouting, improper nosing, polishing swirls, scratches, broken marble... We managed to harmonize all parties, and had developer\'s group process the defect rectification accordingly.',
+            service: 'Newly TOP Project, Marble Inspection',
+            client: 'Condominium Owners',
+            material: 'Marble Vanity Top',
+            location: '10 River Valley Close, Singapore 238438',
+            duration: '4 months'
         },
         {
-            title: 'Courtyard Singapore Novena',
-            category: 'Commercial • Marble',
+            title: 'Sungei Kadut',
+            category: 'Consultation • Factory',
             images: [
-                'images/Past Commercial Projects/Courtyard Singapore Novena.webp'
+                'images/portfolio/consultation/stone-consultation-inspection/3)-sungei-kadut-1.webp',
+                'images/portfolio/consultation/stone-consultation-inspection/3)-sungei-kadut-2.webp',
+                'images/portfolio/consultation/stone-consultation-inspection/3)-sungei-kadut-3.webp',
+                'images/portfolio/consultation/stone-consultation-inspection/3)-sungei-kadut-4.webp'
             ],
-            description: 'International hotel chain marble maintenance. Lobby and guest area restoration maintaining brand standards.',
-            service: 'Hotel Marble Restoration',
-            location: 'Novena',
-            duration: '2 weeks'
-        },
-        {
-            title: 'Massimo Dutti VivoCity',
-            category: 'Commercial • Marble',
-            images: [
-                'images/Massimo Dutti VivoCity Store/DSCF7932.webp',
-                'images/Massimo Dutti VivoCity Store/DSCF7938.webp',
-                'images/Massimo Dutti VivoCity Store/DSCF7954.webp'
-            ],
-            description: 'Luxury retail store flooring restoration. After-hours work to minimize business disruption for flagship store.',
-            service: 'Retail Floor Restoration',
-            location: 'HarbourFront',
-            duration: '1 week'
-        },
-        {
-            title: 'One Devonshire',
-            category: 'Commercial • Marble',
-            images: [
-                'images/Past Commercial Projects/One Devonshire.webp'
-            ],
-            description: 'Boutique office building complete restoration. Exclusive marble finishes restored to original European standards.',
-            service: 'Premium Office Restoration',
-            location: 'Devonshire Road',
-            duration: '2 weeks'
-        },
-        {
-            title: 'Singapore Land Tower',
-            category: 'Commercial • Marble',
-            images: [
-                'images/Past Commercial Projects/Singapore Land Tower.webp'
-            ],
-            description: 'Iconic CBD tower marble maintenance. High-traffic lobby restoration with minimal disruption to tenants.',
-            service: 'Commercial Tower Restoration',
-            location: 'Raffles Place',
-            duration: '3 weeks'
-        },
-        {
-            title: "St Joseph's Home",
-            category: 'Heritage • Marble',
-            images: [
-                "images/Past Commercial Projects/St Joseph's Home Singapore.webp"
-            ],
-            description: 'Heritage care facility restoration. Careful restoration respecting both heritage value and safety requirements.',
-            service: 'Heritage Building Restoration',
-            location: 'Jurong West',
-            duration: '5 weeks'
+            description: 'Providing expert opinion from selection of marble slabs, cuts, factory processing, dry lay, to delivery inspection',
+            service: 'Factory Marble Dry Lay Inspection',
+            client: 'Stone Factory',
+            material: 'Grigio Nero Marble',
+            location: 'Sungei Kadut Street 2, Singapore 729236',
+            duration: '1 month'
         }
     ];
 
