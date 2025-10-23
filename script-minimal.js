@@ -1085,7 +1085,20 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update WhatsApp link with selected service
         const whatsappLink = document.getElementById('whatsappLink');
         if (whatsappLink) {
-            let message = `Hi PSPL, I'm interested in ${service} services. Please provide me with more information about your ${service.toLowerCase()} restoration and polishing services.`;
+            let message;
+            switch (service) {
+                case 'Marble':
+                    message = "Hi PSPL, I'm interested in marble & stone services.";
+                    break;
+                case 'Parquet':
+                    message = "Hi PSPL, I'm interested in parquet & wood services.";
+                    break;
+                case 'Consultation':
+                    message = "Hi PSPL, I'm interested in consultation services.";
+                    break;
+                default:
+                    message = "Hi PSPL, I'm interested in your services.";
+            }
             whatsappLink.href = `https://wa.me/6597677169?text=${encodeURIComponent(message)}`;
         }
     };
