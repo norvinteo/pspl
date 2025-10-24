@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create Intersection Observer to watch hero section
         const navbarObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // When hero section is NOT intersecting or less than 90% visible (scrolled past it)
-                if (!entry.isIntersecting || entry.intersectionRatio < 0.9) {
+                // When hero section is NOT intersecting or less than 70% visible (scrolled past it)
+                if (!entry.isIntersecting || entry.intersectionRatio < 0.7) {
                     // Apply white navbar styles
                     navbar.classList.add('bg-white', 'shadow-lg');
                     navbar.classList.remove('bg-transparent', 'bg-pspl-dark/95', 'backdrop-blur-lg');
@@ -124,9 +124,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }, {
-            // Trigger when 90% of hero section is visible
-            threshold: [0.9],
-            rootMargin: '-80px 0px 0px 0px' // Account for navbar height
+            // Trigger when 70% of hero section is visible (more forgiving for 768px screens)
+            threshold: [0.7],
+            rootMargin: '-60px 0px 0px 0px' // Reduced offset for better responsiveness
         });
         
         // Start observing the hero section
@@ -282,19 +282,120 @@ document.addEventListener('DOMContentLoaded', function() {
         counter.textContent = '0';
         counterObserver.observe(counter);
     });
-    
+
+    // Dynamic image discovery function
+    function discoverProjectImages(basePath, maxImages = 50) {
+        const images = [];
+
+        // Try to discover images by attempting to load them sequentially
+        for (let i = 1; i <= maxImages; i++) {
+            const imagePath = `${basePath}${i}.webp`;
+            images.push(imagePath);
+        }
+
+        return images;
+    }
+
+    // Function to get actual available images for a project (fallback to known counts)
+    function getProjectImages(projectTitle) {
+        const knownImageCounts = {
+            // Commercial Projects
+            'Singapore Land Tower': 4,
+            'Capital Tower': 7,
+            'An-Nahdhah Mosque Singapore': 10,
+            'Marina Bay Financial Tower 3': 10,
+            'Massimo Dutti Vivocity Store': 9,
+            'Tee International Limited': 7,
+            'St Joseph\'s Home Singapore': 4,
+            'Healthway at OUE Downtown 2': 10,
+            'One Devonshire Condominium': 4,
+            'Welcia at Suntec City': 7,
+            'Courtyard Singapore Novena': 7,
+            'The Clearwater Condominium': 7,
+
+            // Restaurant Projects
+            'Odette': 9,
+            'Altro Zafferano at Ocean Financial Centre': 10,
+            'SPRUCE @ HillV2': 10,
+            'Senso Ristorante & Bar': 4,
+            'Fu Lin Men Cantonese Dining at Chinese Swimming Club': 3,
+            'Marina Bay Sands': 5,
+
+            // Heritage Projects
+            'Mount Pleasant Drive': 9,
+            'Everitt Road': 6,
+            'Club Street': 6,
+            'Swettenham Road': 10,
+
+            // Consultation Projects
+            'Bukit Timah': 6,
+            'The Avenir': 10,
+            'Sungei Kadut': 10,
+            'Camborne Road': 10,
+            'Treasure @ Tampines': 10,
+            'Jadescape': 5
+        };
+
+        const imageCount = knownImageCounts[projectTitle] || 4;
+        const portfolioPathMappings = {
+            // Commercial Projects
+            'Singapore Land Tower': 'images/portfolio/commercial/singapore-land-tower/',
+            'Capital Tower': 'images/portfolio/commercial/capital-tower/',
+            'An-Nahdhah Mosque Singapore': 'images/portfolio/commercial/an-nahdhah-mosque/',
+            'Marina Bay Financial Tower 3': 'images/portfolio/commercial/mbfc-tower-3/',
+            'Massimo Dutti Vivocity Store': 'images/portfolio/commercial/massimo-dutti-vivocity/',
+            'Tee International Limited': 'images/portfolio/commercial/tee-international/',
+            'St Joseph\'s Home Singapore': 'images/portfolio/commercial/st-josephs-home/',
+            'Healthway at OUE Downtown 2': 'images/portfolio/commercial/healthway-oue-downtown/',
+            'One Devonshire Condominium': 'images/portfolio/commercial/one-devonshire/',
+            'Welcia at Suntec City': 'images/portfolio/commercial/welcia-suntec/',
+            'Courtyard Singapore Novena': 'images/portfolio/commercial/courtyard-singapore-novena/',
+            'The Clearwater Condominium': 'images/portfolio/commercial/clearwater-condominium/',
+
+            // Restaurant Projects
+            'Odette': 'images/portfolio/restaurant/odette/',
+            'Altro Zafferano at Ocean Financial Centre': 'images/portfolio/restaurant/altro-zafferano/',
+            'SPRUCE @ HillV2': 'images/portfolio/restaurant/spruce-hillv2/',
+            'Senso Ristorante & Bar': 'images/portfolio/restaurant/senso-club-street/',
+            'Fu Lin Men Cantonese Dining at Chinese Swimming Club': 'images/portfolio/restaurant/chinese-swimming-club/',
+            'Marina Bay Sands': 'images/portfolio/restaurant/mbs-restaurant/',
+
+            // Heritage Projects
+            'Mount Pleasant Drive': 'images/portfolio/heritage/mount-pleasant-drive/',
+            'Everitt Road': 'images/portfolio/heritage/everitt-road-shophouse/',
+            'Club Street': 'images/portfolio/heritage/club-street-shophouse/',
+            'Swettenham Road': 'images/portfolio/heritage/swettenham-road-bungalow/',
+
+            // Consultation Projects
+            'Bukit Timah': 'images/portfolio/consultation/bukit-timah/',
+            'The Avenir': 'images/portfolio/consultation/the-avenir/',
+            'Sungei Kadut': 'images/portfolio/consultation/sungei-kadut/',
+            'Camborne Road': 'images/portfolio/consultation/camborne-road/',
+            'Treasure @ Tampines': 'images/portfolio/consultation/treasure-at-tampines/',
+            'Jadescape': 'images/portfolio/consultation/jadescape/'
+        };
+
+        const basePath = portfolioPathMappings[projectTitle];
+        if (!basePath) {
+            console.warn(`No path mapping found for project: ${projectTitle}`);
+            return [];
+        }
+
+        const images = [];
+        for (let i = 1; i <= imageCount; i++) {
+            images.push(`${basePath}${i}.webp`);
+        }
+
+        return images;
+    }
+
     // Updated Project data with new portfolio structure and content from pspl_website_content_3rd_edit.md
     const projectData = [
         // Commercial Projects
         {
             title: 'Singapore Land Tower',
             category: 'Commercial • Marble',
-            images: [
-                'images/portfolio/commercial/singapore-land-tower/1.webp',
-                'images/portfolio/commercial/singapore-land-tower/2.webp',
-                'images/portfolio/commercial/singapore-land-tower/3.webp',
-                'images/portfolio/commercial/singapore-land-tower/4.webp'
-            ],
+            images: getProjectImages('Singapore Land Tower'),
             description: 'An honor to be invited and took part in 2022 for SLT upgrading project. Re-polishing the ground lobby Thassos feature wall. One of the world most expensive marble. Managing harsh working condition like 7 levels scaffoldings with stringent safety requirements by the Japanese Main Contractor. A signature project setting the tallest standards and target for the company. Achievement!',
             service: 'Marble Wall Maintenance Re-polishing',
             client: 'Main Contractor',
@@ -305,12 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Capital Tower',
             category: 'Commercial • Marble',
-            images: [
-                'images/portfolio/commercial/capital-tower/1.webp',
-                'images/portfolio/commercial/capital-tower/2.webp',
-                'images/portfolio/commercial/capital-tower/3.webp',
-                'images/portfolio/commercial/capital-tower/4.webp'
-            ],
+            images: getProjectImages('Capital Tower'),
             description: 'Complete restoration of all lobbies marble floor to top shine, including elevator floor to privacy satin finish. This prestigious project involved meticulous planning with the building management to segment and cordon various lobby areas, and timely coordination with lift technician to secure the elevator(s). Seamless, with little to no interruption to operations and functions.',
             service: 'Marble Floor Maintenance Re-polishing',
             client: 'Building Management',
@@ -321,12 +417,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'An-Nahdhah Mosque Singapore',
             category: 'Commercial • Marble',
-            images: [
-                'images/portfolio/commercial/an-nahdhah-mosque/1.webp',
-                'images/portfolio/commercial/an-nahdhah-mosque/2.webp',
-                'images/portfolio/commercial/an-nahdhah-mosque/3.webp',
-                'images/portfolio/commercial/an-nahdhah-mosque/4.webp'
-            ],
+            images: getProjectImages('An-Nahdhah Mosque Singapore'),
             description: 'Sanding repolishing of the Qibla wall, black marble stone layered over 8 levels of scaffolding. A sacred moment and our crew took the utmost pride in reburnishing the stone back to its former glory.',
             service: 'Marble Wall Maintenance Re-polishing',
             client: 'Building Management',
@@ -337,12 +428,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Marina Bay Financial Tower 3',
             category: 'Commercial • Floor',
-            images: [
-                'images/portfolio/commercial/mbfc-tower-3/1.webp',
-                'images/portfolio/commercial/mbfc-tower-3/2.webp',
-                'images/portfolio/commercial/mbfc-tower-3/3.webp',
-                'images/portfolio/commercial/mbfc-tower-3/4.webp'
-            ],
+            images: getProjectImages('Marina Bay Financial Tower 3'),
             description: 'Electrostatic discharge raised steel floor\'s carpet adhesive removal polishing. Main aim of the project is to lower cost for client to avoid mass replacement of the ESD raised floor. Mock ups are done and approved by building management. In order to determine the most suitable chemicals for the enclosed office environment and centralized air-conditioning system, with low odour emission and non-corrosive formula. Our team worked around the clock for the 13,000 square feet to be handed over to the building management on time.',
             service: 'Office Raised Floor Adhesive Removal',
             client: 'Main Contractor',
@@ -353,12 +439,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Massimo Dutti Vivocity Store',
             category: 'Commercial • Marble',
-            images: [
-                'images/portfolio/commercial/massimo-dutti-vivocity/1.webp',
-                'images/portfolio/commercial/massimo-dutti-vivocity/2.webp',
-                'images/portfolio/commercial/massimo-dutti-vivocity/3.webp',
-                'images/portfolio/commercial/massimo-dutti-vivocity/4.webp'
-            ],
+            images: getProjectImages('Massimo Dutti Vivocity Store'),
             description: 'Herringbone tiling pattern, pushes the physical limit of craftsmen especially at the initial phase of grinding, to sort out the lippage of the smaller than usual size marble. Ensuring all corners and edges afloat, while maintaining the levelness of the surface. Truly our signature art piece.',
             service: 'New Laid Marble Floor Polishing',
             client: 'Main Contractor',
@@ -369,12 +450,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Tee International Limited',
             category: 'Commercial • Marble',
-            images: [
-                'images/portfolio/commercial/tee-international/1.webp',
-                'images/portfolio/commercial/tee-international/2.webp',
-                'images/portfolio/commercial/tee-international/3.webp',
-                'images/portfolio/commercial/tee-international/4.webp'
-            ],
+            images: getProjectImages('Tee International Limited'),
             description: 'First impressions matter. Emphasis is place to achieve superior quality result, to ensure a welcoming lobby space ready to impress visitors. All craftsmen are experienced to handle handheld polisher on mobile scaffolding.',
             service: 'Main Lobby Maintenance Marble Feature Wall Re-polishing, Granite Floor Buffing',
             client: 'Building Management',
@@ -385,12 +461,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'St Joseph\'s Home Singapore',
             category: 'Commercial • Granite',
-            images: [
-                'images/portfolio/commercial/st-josephs-home/1.webp',
-                'images/portfolio/commercial/st-josephs-home/2.webp',
-                'images/portfolio/commercial/st-josephs-home/3.webp',
-                'images/portfolio/commercial/st-josephs-home/4.webp'
-            ],
+            images: getProjectImages('St Joseph\'s Home Singapore'),
             description: 'Restoring pride and shine to the igneous granite rock floor, to this place of worship. Proper understanding of natural stone enables our crew to tackle various issue like oil/rust stain, blemish, worn shine...',
             service: 'Chapel Floor Granite Buffing',
             client: 'Building Management',
@@ -401,12 +472,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Healthway at OUE Downtown 2',
             category: 'Commercial • Marble',
-            images: [
-                'images/portfolio/commercial/healthway-oue-downtown/1.webp',
-                'images/portfolio/commercial/healthway-oue-downtown/2.webp',
-                'images/portfolio/commercial/healthway-oue-downtown/3.webp',
-                'images/portfolio/commercial/healthway-oue-downtown/4.webp'
-            ],
+            images: getProjectImages('Healthway at OUE Downtown 2'),
             description: 'Elevating guest experience is priority. A favorite marble in residential, house in a commercial lobby requires similar attention to details. Acknowledging the high absorption nature of this porous marble, we had responded with finest sponge grind diamond abrasive to refine and close the pores of the stone. In addition, a USA sealer application to better protect against liquid stains and dirt.',
             service: 'Main Lobby Maintenance Marble Floor Re-polishing',
             client: 'Anchor Tenant',
@@ -417,12 +483,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'One Devonshire Condominium',
             category: 'Commercial • Granite',
-            images: [
-                'images/portfolio/commercial/one-devonshire/IMG_1718.webp',
-                'images/portfolio/commercial/one-devonshire/IMG_1722.webp',
-                'images/portfolio/commercial/one-devonshire/IMG_1788.webp',
-                'images/portfolio/commercial/one-devonshire/IMG_1805.webp'
-            ],
+            images: getProjectImages('One Devonshire Condominium'),
             description: 'Driveway entrance, water feature granite had its surface stripped by harsh chlorine bleach. Proposed re-surfacing with chemical buffing to re-attain the stone former glory.',
             service: 'Granite Water Feature Restoration',
             client: 'MCST',
@@ -433,12 +494,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Welcia at Suntec City',
             category: 'Commercial • Corian',
-            images: [
-                'images/portfolio/commercial/welcia-suntec/1.webp',
-                'images/portfolio/commercial/welcia-suntec/2.webp',
-                'images/portfolio/commercial/welcia-suntec/3.webp',
-                'images/portfolio/commercial/welcia-suntec/4.webp'
-            ],
+            images: getProjectImages('Welcia at Suntec City'),
             description: 'Repair and restore the countertop, injecting a new life to the furniture.',
             service: 'Corian Top Sanding and Buffing to Shine',
             client: 'Main Contractor',
@@ -449,12 +505,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Courtyard Singapore Novena',
             category: 'Commercial • Hotel',
-            images: [
-                'images/portfolio/commercial/courtyard-singapore-novena/1.webp',
-                'images/portfolio/commercial/courtyard-singapore-novena/2.webp',
-                'images/portfolio/commercial/courtyard-singapore-novena/3.webp',
-                'images/portfolio/commercial/courtyard-singapore-novena/4.webp'
-            ],
+            images: getProjectImages('Courtyard Singapore Novena'),
             description: 'Allocated night job with the lowest foot traffic to ensure the least disturbance to hotel guest. Proper protection setup to shield the surrounding features from the slurry and chemicals. Swift and sequential, for a job well done in a timeliness manner.',
             service: 'Elevator Floor Marble Re-polishing',
             client: 'Housekeeping',
@@ -465,12 +516,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'The Clearwater Condominium',
             category: 'Commercial • Marble',
-            images: [
-                'images/portfolio/commercial/clearwater-condominium/1.webp',
-                'images/portfolio/commercial/clearwater-condominium/2.webp',
-                'images/portfolio/commercial/clearwater-condominium/3.webp',
-                'images/portfolio/commercial/clearwater-condominium/4.webp'
-            ],
+            images: getProjectImages('The Clearwater Condominium'),
             description: 'Built in 2002, restoring the marble at lift lobby wall has its fair share of challenges. Decades of collected dirt, loss of shine and adhesive residue. We had to tailor the polishing formula accordingly without interrupting the full operations of the lifts and residents.',
             service: 'Lift Lobby Marble Cleaning & Waxing',
             client: 'Cleaning Maintenance Company',
@@ -483,12 +529,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Odette',
             category: 'Restaurant • Marble',
-            images: [
-                'images/portfolio/restaurant/odette/1.webp',
-                'images/portfolio/restaurant/odette/2.webp',
-                'images/portfolio/restaurant/odette/3.webp',
-                'images/portfolio/restaurant/odette/4.webp'
-            ],
+            images: getProjectImages('Odette'),
             description: 'A remarkable project, racing against time for the grand restaurant opening. The design theme, saw the re-creation of broken marble flooring which is at brink of lost craft. In honor of the senior masons and their fine work of art, great respect is taken to meticulously grind polish the floor, unleashing the beauty within.',
             service: 'New Laid Marble Floor Polishing',
             client: 'Main Contractor',
@@ -499,12 +540,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Altro Zafferano at Ocean Financial Centre',
             category: 'Restaurant • Marble',
-            images: [
-                'images/portfolio/restaurant/altro-zafferano/1.webp',
-                'images/portfolio/restaurant/altro-zafferano/2.webp',
-                'images/portfolio/restaurant/altro-zafferano/3.webp',
-                'images/portfolio/restaurant/altro-zafferano/4.webp'
-            ],
+            images: getProjectImages('Altro Zafferano at Ocean Financial Centre'),
             description: 'Severely scratched (stun marks) marble are tackle with quality diamond abrasive for optimal result. Leaving no traces of "potholes". Allocated hours before the restaurant opening had us place standby, both manpower and machines to ensure zero room for error.',
             service: 'Marble Stun Marks Restoration',
             client: 'Contractor',
@@ -515,12 +551,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'SPRUCE @ HillV2',
             category: 'Restaurant • Marble',
-            images: [
-                'images/portfolio/restaurant/spruce-hillv2/1.webp',
-                'images/portfolio/restaurant/spruce-hillv2/2.webp',
-                'images/portfolio/restaurant/spruce-hillv2/3.webp',
-                'images/portfolio/restaurant/spruce-hillv2/4.webp'
-            ],
+            images: getProjectImages('SPRUCE @ HillV2'),
             description: 'From countertop, salad bar to flooring, the versatile and eye-pleasing White Volakas was deployed at various parts of the restaurant. Mother Nature\'s impressive build of marble truly stands out, as the stone is capable to undertake proper resurfacing on site for a revitalized restaurant appearance. Ready to open its door to diners!',
             service: 'Maintenance Marble Floor Re-polishing',
             client: 'Main Contractor',
@@ -531,12 +562,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Senso Ristorante & Bar',
             category: 'Restaurant • Marble',
-            images: [
-                'images/portfolio/restaurant/senso-club-street/1.webp',
-                'images/portfolio/restaurant/senso-club-street/2.webp',
-                'images/portfolio/restaurant/senso-club-street/3.webp',
-                'images/portfolio/restaurant/senso-club-street/4.webp'
-            ],
+            images: getProjectImages('Senso Ristorante & Bar'),
             description: 'Highly valued for its decorative appearance, the Onyx stone is carefully constructed with embedded lighting to unleash the beauty. Our crew put their heart and soul into refurnishing the piece of art.',
             service: 'Maintenance Marble Bar Top Re-polishing',
             client: 'Tenant',
@@ -547,12 +573,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Fu Lin Men Cantonese Dining at Chinese Swimming Club',
             category: 'Restaurant • Porcelain',
-            images: [
-                'images/portfolio/restaurant/chinese-swimming-club/1.webp',
-                'images/portfolio/restaurant/chinese-swimming-club/2.webp',
-                'images/portfolio/restaurant/chinese-swimming-club/3.webp',
-                'images/portfolio/restaurant/chinese-swimming-club/4.webp'
-            ],
+            images: getProjectImages('Fu Lin Men Cantonese Dining at Chinese Swimming Club'),
             description: 'Heavy foot traffic worn the top coat of the porcelain tiles, resulting in collected dirt. Our sequential formula effectively cleans the blemishes, then buff to restore the shine. A tighter surface pores, for a longer lasting shine.',
             service: 'Porcelain Machine Chemical Buffing',
             client: 'Main Contractor',
@@ -563,12 +584,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Marina Bay Sands',
             category: 'Restaurant • Homogenous',
-            images: [
-                'images/portfolio/restaurant/mbs-restaurant/1.webp',
-                'images/portfolio/restaurant/mbs-restaurant/2.webp',
-                'images/portfolio/restaurant/mbs-restaurant/3.webp',
-                'images/portfolio/restaurant/mbs-restaurant/4.webp'
-            ],
+            images: getProjectImages('Marina Bay Sands'),
             description: 'Homogenous tile machine chemical buffing to clean and importantly reinstate the glow back to the stone. Ready to serve its new tenant.',
             service: 'Homogenous Tile Machine Chemical Buffing',
             client: 'Designer',
@@ -581,12 +597,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Mount Pleasant Drive',
             category: 'Heritage • Marble',
-            images: [
-                'images/portfolio/heritage/mount-pleasant-drive/2.webp',
-                'images/portfolio/heritage/mount-pleasant-drive/3.webp',
-                'images/portfolio/heritage/mount-pleasant-drive/4.webp',
-                'images/portfolio/heritage/mount-pleasant-drive/5.webp'
-            ],
+            images: getProjectImages('Mount Pleasant Drive'),
             description: 'This monumental conservation construction is often a site for filming. Our team went over and beyond to ensure the flooring is ready to dazzle for its next shoot and/or tenant.',
             service: 'Marble Floor Maintenance Re-polishing',
             client: 'Heritage Conservation',
@@ -597,12 +608,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Everitt Road',
             category: 'Heritage • Shophouse',
-            images: [
-                'images/portfolio/heritage/everitt-road-shophouse/1.webp',
-                'images/portfolio/heritage/everitt-road-shophouse/2.webp',
-                'images/portfolio/heritage/everitt-road-shophouse/3.webp',
-                'images/portfolio/heritage/everitt-road-shophouse/4.webp'
-            ],
+            images: getProjectImages('Everitt Road'),
             description: 'Workmanship of such fine build quality are rare. Crucial for craftsmen to preserve and take extreme care in every procedure from establishing protection to the layered polishing itself. Truly deserving!',
             service: 'Marble Floor Maintenance Re-polishing',
             client: 'Heritage Conservation',
@@ -613,12 +619,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Club Street',
             category: 'Heritage • Wood',
-            images: [
-                'images/portfolio/heritage/club-street-shophouse/1.webp',
-                'images/portfolio/heritage/club-street-shophouse/2.webp',
-                'images/portfolio/heritage/club-street-shophouse/3.webp',
-                'images/portfolio/heritage/club-street-shophouse/4.webp'
-            ],
+            images: getProjectImages('Club Street'),
             description: 'Chengal decked upper storey, architectural construction possesses constant movement, resulting in challenges during sanding and gap filling. A tailored formula, to achieve result worthy of its conservation status.',
             service: 'Chengal Wood Light Sand, Stain, Waterbased Topcoat',
             client: 'Conservation Shophouse',
@@ -629,12 +630,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Swettenham Road',
             category: 'Heritage • Terrazzo',
-            images: [
-                'images/portfolio/heritage/swettenham-road-bungalow/1.webp',
-                'images/portfolio/heritage/swettenham-road-bungalow/2.webp',
-                'images/portfolio/heritage/swettenham-road-bungalow/3.webp',
-                'images/portfolio/heritage/swettenham-road-bungalow/4.webp'
-            ],
+            images: getProjectImages('Swettenham Road'),
             description: 'Our team felt extreme pride and joy in restoring the terrazzo for the conservation bungalow constructed before Singapore\'s independence. Huge honor and pleasure to serve the foreign ambassador.',
             service: 'Terrazzo Re-polishing',
             client: 'British Colonial Bungalow',
@@ -647,12 +643,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'The Avenir',
             category: 'Consultation • Inspection',
-            images: [
-                'images/portfolio/consultation/stone-consultation-inspection/2)-the-avenir-1.webp',
-                'images/portfolio/consultation/stone-consultation-inspection/2)-the-avenir-2.webp',
-                'images/portfolio/consultation/stone-consultation-inspection/2)-the-avenir-3.webp',
-                'images/portfolio/consultation/stone-consultation-inspection/2)-the-avenir-4.webp'
-            ],
+            images: getProjectImages('The Avenir'),
             description: 'In collaboration with renowned local defect inspection company, we assisted multiple new homeowners to achieve deserving quality their new marble should possess. From stun marks, irregular grouting, improper nosing, polishing swirls, scratches, broken marble... We managed to harmonize all parties, and had developer\'s group process the defect rectification accordingly.',
             service: 'Newly TOP Project, Marble Inspection',
             client: 'Condominium Owners',
@@ -663,18 +654,57 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Sungei Kadut',
             category: 'Consultation • Factory',
-            images: [
-                'images/portfolio/consultation/stone-consultation-inspection/3)-sungei-kadut-1.webp',
-                'images/portfolio/consultation/stone-consultation-inspection/3)-sungei-kadut-2.webp',
-                'images/portfolio/consultation/stone-consultation-inspection/3)-sungei-kadut-3.webp',
-                'images/portfolio/consultation/stone-consultation-inspection/3)-sungei-kadut-4.webp'
-            ],
+            images: getProjectImages('Sungei Kadut'),
             description: 'Providing expert opinion from selection of marble slabs, cuts, factory processing, dry lay, to delivery inspection',
             service: 'Factory Marble Dry Lay Inspection',
             client: 'Stone Factory',
             material: 'Grigio Nero Marble',
             location: 'Sungei Kadut Street 2, Singapore 729236',
             duration: '1 month'
+        },
+        {
+            title: 'Bukit Timah',
+            category: 'Consultation • Inspection',
+            images: getProjectImages('Bukit Timah'),
+            description: 'Comprehensive stone defect inspection and quality assessment for residential project. Detailed documentation of marble installation issues and recommendations for remediation.',
+            service: 'Residential Marble Quality Inspection',
+            client: 'Homeowner',
+            material: 'Imported Marble',
+            location: 'Bukit Timah Road, Singapore',
+            duration: '2 weeks'
+        },
+        {
+            title: 'Camborne Road',
+            category: 'Consultation • Assessment',
+            images: getProjectImages('Camborne Road'),
+            description: 'Expert assessment of stone restoration requirements for heritage property. Professional evaluation of marble condition and restoration planning.',
+            service: 'Heritage Property Stone Assessment',
+            client: 'Property Developer',
+            material: 'Heritage Marble',
+            location: 'Camborne Road, Singapore',
+            duration: '3 weeks'
+        },
+        {
+            title: 'Treasure @ Tampines',
+            category: 'Consultation • Inspection',
+            images: getProjectImages('Treasure @ Tampines'),
+            description: 'New development marble defect inspection and quality control. Ensuring compliance with building standards and addressing installation defects.',
+            service: 'New Development Quality Control',
+            client: 'Condominium Developer',
+            material: 'Premium Marble',
+            location: 'Tampines Street 92, Singapore',
+            duration: '5 weeks'
+        },
+        {
+            title: 'Jadescape',
+            category: 'Consultation • Inspection',
+            images: getProjectImages('Jadescape'),
+            description: 'Luxury condominium marble inspection and defect assessment. Expert evaluation for developer handover and quality assurance.',
+            service: 'Luxury Development Inspection',
+            client: 'Condominium Management',
+            material: 'Designer Marble',
+            location: 'Shunfu Road, Singapore',
+            duration: '3 weeks'
         }
     ];
 

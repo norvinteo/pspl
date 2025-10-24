@@ -31,5 +31,10 @@ const portfolioPathMappings = {
     'Club Street (Conservation Shophouse)': 'images/portfolio/heritage/club-street-shophouse/',
 
     // Consultation Projects
-    'Stone Consultation Inspection': 'images/portfolio/consultation/stone-consultation-inspection/'
+    'Bukit Timah': 'images/portfolio/consultation/bukit-timah/',
+    'The Avenir': 'images/portfolio/consultation/the-avenir/',
+    'Sungei Kadut': 'images/portfolio/consultation/sungei-kadut/',
+    'Camborne Road': 'images/portfolio/consultation/camborne-road/',
+    'Treasure @ Tampines': 'images/portfolio/consultation/treasure-at-tampines/',
+    'Jadescape': 'images/portfolio/consultation/jadescape/'
 };
