@@ -558,6 +558,18 @@ nav.scrolled {
     opacity: 0.3;
 }
 
+/* Mobile Timeline Line */
+.mobile-timeline-line {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--pspl-gold), var(--pspl-red));
+    opacity: 0.4;
+    z-index: 1;
+}
+
 /* .timeline-item {
     opacity: 0;
     transform: translateY(30px);
