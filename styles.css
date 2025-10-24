@@ -561,13 +561,19 @@ nav.scrolled {
 /* Mobile Timeline Line */
 .mobile-timeline-line {
     position: absolute;
-    left: 10px;
+    left: 8px;
     top: 0;
     width: 2px;
     height: 100%;
     background: linear-gradient(180deg, var(--pspl-gold), var(--pspl-red));
     opacity: 0.4;
     z-index: 1;
+}
+
+@media (min-width: 640px) {
+    .mobile-timeline-line {
+        left: 10px;
+    }
 }
 
 /* .timeline-item {
