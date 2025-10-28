@@ -2040,3 +2040,20 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
         display: none !important;
     }
 }
+
+/* PSPL Method Responsive Breakpoint Fixes - Prevent Overlap */
+
+/* Mobile Method Cards - Explicitly hide on desktop (≥768px) */
+@media (min-width: 768px) {
+    .md\:hidden .white-card {
+        display: none !important;
+    }
+}
+
+/* Desktop Method Table - Explicitly hide on mobile (<768px) */
+@media (max-width: 767px) {
+    .hidden.md\:block table,
+    .hidden.md\:block .overflow-x-auto {
+        display: none !important;
+    }
+}
