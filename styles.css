@@ -1,0 +1,2024 @@
+/* PSPL Website - Enhanced Styles */
+
+:root {
+    /* Color Palette */
+    --pspl-red: #C24040;
+    --pspl-gold: #D4A574;
+    --pspl-dark: #1a1a1a;
+    --pspl-cream: #FAF8F5;
+    --pspl-white: #ffffff;
+    
+    /* Typography Scale */
+    --fs-xs: clamp(0.75rem, 1.5vw, 0.875rem);
+    --fs-sm: clamp(0.875rem, 1.75vw, 1rem);
+    --fs-base: clamp(1rem, 2vw, 1.125rem);
+    --fs-lg: clamp(1.125rem, 2.25vw, 1.25rem);
+    --fs-xl: clamp(1.25rem, 2.5vw, 1.5rem);
+    --fs-2xl: clamp(1.5rem, 3vw, 1.875rem);
+    --fs-3xl: clamp(1.875rem, 3.5vw, 2.25rem);
+    --fs-4xl: clamp(2.25rem, 4vw, 3rem);
+    --fs-5xl: clamp(2.5rem, 4.5vw, 3.5rem);
+    
+    /* Line Heights */
+    --lh-tight: 1.2;
+    --lh-snug: 1.4;
+    --lh-normal: 1.6;
+    --lh-relaxed: 1.8;
+    --lh-loose: 2;
+    
+    /* Letter Spacing */
+    --ls-tight: -0.02em;
+    --ls-normal: 0;
+    --ls-wide: 0.02em;
+    --ls-wider: 0.05em;
+    --ls-widest: 0.1em;
+    
+    /* Font Weights */
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    --fw-black: 900;
+    
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    --space-2xl: 4rem;
+    --space-3xl: 6rem;
+    
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slower: 800ms cubic-bezier(0.65, 0, 0.35, 1);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.25);
+    --shadow-2xl: 0 30px 60px rgba(0, 0, 0, 0.3);
+    --shadow-gold: 0 10px 40px rgba(212, 165, 116, 0.3);
+    
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-full: 9999px;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fix for Stone Consultation Services links */
+.expertise-section ul li a {
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 10 !important;
+    display: inline-block !important;
+    cursor: pointer !important;
+}
+
+/* Ensure card pseudo-element doesn't block clicks */
+.card::before {
+    pointer-events: none !important;
+}
+
+/* Certifications Section Styles */
+.certification-card {
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    background: var(--pspl-white);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    border: 1px solid #f3f4f6;
+}
+
+.certification-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--pspl-gold);
+}
+
+.certification-card img {
+    transition: all var(--transition-base);
+    filter: brightness(1) contrast(1);
+}
+
+.certification-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments for certifications */
+@media (max-width: 768px) {
+    .certification-card {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .certification-card img {
+        height: 80px !important;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--pspl-gold) var(--pspl-dark);
+}
+
+html::-webkit-scrollbar {
+    width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--pspl-dark);
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--pspl-gold);
+    border-radius: var(--radius-full);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: var(--pspl-red);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    /* Removed overflow-x: hidden as it breaks IntersectionObserver animations */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--pspl-cream);
+    color: var(--pspl-dark);
+    position: relative;
+}
+
+/* Background Texture */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.02;
+    z-index: -1;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(194, 64, 64, 0.05) 35px, rgba(194, 64, 64, 0.05) 70px),
+        repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(212, 165, 116, 0.05) 35px, rgba(212, 165, 116, 0.05) 70px);
+    pointer-events: none;
+}
+
+/* Typography */
+.font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-tight);
+}
+
+/* Dynamic Typography Classes */
+.dynamic-hero-title {
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    word-spacing: 0.1em;
+}
+
+.dynamic-hero-subtitle {
+    font-size: clamp(1.125rem, 2.25vw, 1.75rem);
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+}
+
+.dynamic-section-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    line-height: 1.2;
+}
+
+.dynamic-stat-number {
+    font-size: clamp(2.25rem, 3.5vw, 3.25rem);
+}
+
+.dynamic-subheading {
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+/* Enhanced Typography Classes */
+.text-balance {
+    text-wrap: balance;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--pspl-gold) 0%, var(--pspl-red) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+.text-shadow-subtle {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-strong {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* CSS-only animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Auto-animate on load - disabled to allow JS animations */
+/* .dynamic-hero-title {
+    animation: fadeInUp 1s ease-out !important;
+}
+
+.dynamic-hero-subtitle {
+    animation: fadeInUp 1s ease-out 0.3s backwards !important;
+}
+
+#heroValue {
+    animation: fadeIn 1s ease-out 0.6s backwards;
+}
+
+#heroButtons {
+    animation: fadeInUp 1s ease-out 0.9s backwards;
+} */
+
+/* Reveal animations - removed to allow JS animations to work */
+/* .reveal-fade,
+/* .reveal-scale,
+.reveal-text {
+    opacity: 1 !important;
+    transform: none !important;
+} */
+
+/* Show counter final values */
+.counter {
+    display: inline-block;
+}
+
+.counter:empty::after {
+    content: attr(data-target);
+}
+
+/* Timeline items - removed forced visibility to allow JS animations */
+/* .timeline-item {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: fadeInUp 0.8s ease-out backwards;
+} */
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+.timeline-item:nth-child(5) { animation-delay: 0.5s; }
+.timeline-item:nth-child(6) { animation-delay: 0.6s; }
+.timeline-item:nth-child(7) { animation-delay: 0.7s; }
+.timeline-item:nth-child(8) { animation-delay: 0.8s; }
+
+/* Progress Bar */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--pspl-red), var(--pspl-gold));
+    width: 0%;
+    z-index: 100;
+    transition: width var(--transition-base);
+    box-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
+}
+
+/* Navigation */
+nav {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all var(--transition-base);
+}
+
+nav.scrolled {
+    background: rgba(26, 26, 26, 0.95);
+    box-shadow: var(--shadow-lg);
+}
+
+.nav-link {
+    position: relative;
+    transition: color var(--transition-base);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--pspl-gold);
+    transition: width var(--transition-base);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: var(--pspl-gold) !important;
+}
+
+/* Hero Section Enhancements */
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Removed heroZoom animation for performance */
+    transform: scale(1.05);
+    transition: transform 10s ease-out;
+}
+
+.hero-overlay {
+    background: linear-gradient(
+        180deg, 
+        rgba(26, 26, 26, 0.9) 0%, 
+        rgba(26, 26, 26, 0.7) 50%,
+        rgba(194, 64, 64, 0.4) 100%
+    );
+}
+
+/* Hero Reveal Animation */
+@keyframes heroReveal {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-reveal {
+    animation: heroReveal 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Premium Button Enhancements */
+.premium-button {
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-base);
+    z-index: 1;
+    box-shadow: var(--shadow-md);
+    transform: translateY(0);
+}
+
+.premium-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -1;
+}
+
+.premium-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.premium-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-xl), 0 10px 40px rgba(212, 165, 116, 0.3);
+}
+
+.premium-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.premium-button:hover::after {
+    transform: translateX(100%);
+}
+
+.premium-button:active {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* CTA Button - Static shadow for performance */
+.cta-primary {
+    box-shadow: 0 4px 20px rgba(212, 165, 116, 0.4);
+    transition: all var(--transition-base);
+}
+
+.cta-primary:hover {
+    box-shadow: 0 4px 30px rgba(212, 165, 116, 0.6);
+    transform: translateY(-2px) !important;
+}
+
+/* Card Enhancements */
+.card {
+    background: var(--pspl-white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent, rgba(212, 165, 116, 0.05));
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* Expertise Section List Item Effects */
+/* Base styling for all expertise items */
+#expertise ul li {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    margin: 0.25rem 0;
+    border-left: 3px solid transparent;
+}
+
+/* Interactive styling only for linked items */
+#expertise ul li:has(a) {
+    cursor: pointer;
+    transition: all var(--transition-base),
+                background-color var(--transition-fast),
+                transform var(--transition-fast),
+                border-left-color var(--transition-base),
+                box-shadow var(--transition-base);
+}
+
+#expertise ul li:has(a):hover {
+    background-color: rgba(212, 165, 116, 0.15);
+    transform: translateX(4px);
+    border-left-color: var(--pspl-gold);
+    padding-left: 0.5rem;
+    box-shadow: 0 4px 12px rgba(212, 165, 116, 0.25);
+}
+
+/* Smooth transition for link text color changes */
+#expertise ul li a {
+    transition: color var(--transition-fast);
+}
+
+/* Timeline Enhancements */
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--pspl-gold), var(--pspl-red));
+    opacity: 0.3;
+}
+
+/* Mobile Timeline Line */
+.mobile-timeline-line {
+    position: absolute;
+    left: 8px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--pspl-gold), var(--pspl-red));
+    opacity: 0.4;
+    z-index: 1;
+}
+
+@media (min-width: 640px) {
+    .mobile-timeline-line {
+        left: 10px;
+    }
+}
+
+/* .timeline-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all var(--transition-slow);
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+} */
+
+.timeline-dot {
+    position: relative;
+    z-index: 10;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--pspl-gold);
+    border: 3px solid var(--pspl-dark);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-base);
+}
+
+.timeline-dot::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: var(--pspl-gold);
+    border-radius: 50%;
+    opacity: 0;
+    /* Removed animation for performance */
+    pointer-events: none;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.5);
+    background: var(--pspl-red);
+    border-color: var(--pspl-red);
+    box-shadow: 0 0 20px rgba(194, 64, 64, 0.4);
+}
+
+/* Portfolio Grid Enhancements */
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.portfolio-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(26, 26, 26, 0.9) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    z-index: 1;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-2px) !important;
+}
+
+.portfolio-item:hover::before {
+    opacity: 1;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.portfolio-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    transform: translateY(100%);
+    transition: transform var(--transition-base);
+    z-index: 2;
+}
+
+.portfolio-item:hover .portfolio-info {
+    transform: translateY(0);
+}
+
+/* Filter Buttons */
+.filter-btn {
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: var(--pspl-red);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+    z-index: -1;
+}
+
+.filter-btn:hover {
+    transform: translateY(-2px) !important;
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before {
+    width: 200%;
+    height: 200%;
+}
+
+.filter-btn.active {
+    background: var(--pspl-red);
+    color: var(--pspl-white);
+    border-color: var(--pspl-red);
+}
+
+/* Specialty Sections */
+.specialty-section {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.specialty-section:not(:last-child) {
+    margin-bottom: 4rem;
+    padding-bottom: 4rem;
+}
+
+.specialty-section:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--pspl-gold), transparent);
+}
+
+.specialty-header {
+    /* animation: fadeInUp 0.6s ease; */
+    margin-bottom: 3rem;
+}
+
+.specialty-header h3 {
+    color: var(--pspl-dark);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.specialty-header .flex {
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.specialty-groups-container {
+    animation: fadeIn 0.8s ease;
+}
+
+/* Service Cards */
+.service-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: all var(--transition-base);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--pspl-gold) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    pointer-events: none;
+}
+
+.service-card:hover {
+    transform: translateY(-2px) !important;
+    background: rgba(212, 165, 116, 0.1);
+    border-color: rgba(212, 165, 116, 0.3);
+    box-shadow: 0 10px 40px rgba(212, 165, 116, 0.2);
+}
+
+.service-card:hover::before {
+    opacity: 0.1;
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(212, 165, 116, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all var(--transition-base);
+}
+
+.service-card:hover .service-icon {
+    background: rgba(212, 165, 116, 0.3);
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+    background: var(--pspl-white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+/* Core Value Items */
+.core-value-item {
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.core-value-item:hover {
+    transform: translateY(-2px) !important;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 4rem;
+    color: var(--pspl-gold);
+    opacity: 0.2;
+    font-family: 'Playfair Display', serif;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Standardized Card Shadows - Based on Service Cards */
+/* Base shadow for all white background cards */
+.white-card,
+.purpose-card,
+.pillar-card,
+.promise-card,
+.featured-card {
+    background: var(--pspl-white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover state for all white cards */
+.white-card:hover,
+.purpose-card:hover,
+.pillar-card:hover,
+.promise-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* White card specific */
+.white-card {
+    padding: 1.5rem;
+}
+
+/* Fleet card specific styling */
+.fleet-card {
+    padding: 0;
+    background: var(--pspl-white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.fleet-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.fleet-card img {
+    margin: 0;
+    width: 100%;
+    display: block;
+    border-radius: 0;
+}
+
+.fleet-card h4 {
+    padding: 1rem 1.5rem 0.5rem 1.5rem;
+    margin: 0;
+}
+
+.fleet-card p {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    margin: 0;
+}
+
+/* Stat Wrapper */
+.stat-wrapper {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.stat-wrapper:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--pspl-gold);
+    color: var(--pspl-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+    z-index: 40;
+    box-shadow: var(--shadow-lg);
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background: var(--pspl-red);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Floating Badges */
+.floating-badge {
+    position: fixed;
+    z-index: 40;
+    background: linear-gradient(135deg, var(--pspl-dark) 0%, #2a2a2a 100%);
+    color: var(--pspl-white);
+    padding: 12px 20px;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid rgba(212, 165, 116, 0.3);
+    /* Removed animation for performance */
+    transform: translateZ(0);
+}
+
+/* Portrait Tablet Navigation Override */
+@media (min-width: 768px) and (max-width: 1100px) {
+    /* Hide desktop navigation on portrait tablets */
+    .hidden.md\:flex {
+        display: none !important;
+    }
+
+    /* Show mobile button on portrait tablets */
+    .md\:hidden {
+        display: block !important;
+    }
+}
+
+/* Large Portrait Tablets (iPad Pro 12.9") - Additional safety net */
+@media (min-width: 1024px) and (max-width: 1100px) and (orientation: portrait) {
+    .hidden.md\:flex {
+        display: none !important;
+    }
+    .md\:hidden {
+        display: block !important;
+    }
+}
+
+/* Mobile Menu - Optimized for performance */
+.mobile-menu {
+    background: rgba(26, 26, 26, 0.98);
+    /* Removed expensive backdrop-filter */
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Pre-render menu off-screen for better performance */
+#mobileMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 50;
+}
+
+#mobileMenu:not(.hidden) {
+    transform: translateX(0);
+}
+
+.mobile-menu-link {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.2s ease-out;
+}
+
+/* Clean up will-change after transition */
+#mobileMenu.hidden {
+    will-change: auto;
+}
+
+/* Counter Animation */
+.counter {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Image Lazy Loading */
+img[data-src] {
+    filter: blur(5px);
+    transition: filter var(--transition-base);
+}
+
+img.loaded {
+    filter: blur(0);
+}
+
+/* Desktop Timeline Fixes */
+@media (min-width: 768px) {
+    .timeline-item {
+        position: relative;
+    }
+    
+    .timeline-dot {
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        top: 50% !important;
+        margin-top: -10px;
+    }
+}
+
+/* Responsive Improvements */
+@media (max-width: 767px) {
+    :root {
+        --space-xs: 0.25rem;
+        --space-sm: 0.5rem;
+        --space-md: 1rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
+        --space-2xl: 3rem;
+        --space-3xl: 4rem;
+    }
+    
+    /* Hero typography adjustments */
+    .dynamic-hero-title {
+        font-size: clamp(1.875rem, 6vw, 2.5rem) !important;
+        line-height: 1.2 !important;
+    }
+    
+    .dynamic-hero-subtitle {
+        font-size: clamp(1rem, 3vw, 1.25rem) !important;
+    }
+    
+    .dynamic-stat-number {
+        font-size: clamp(1.75rem, 5vw, 2.25rem) !important;
+    }
+    
+    /* Better contrast on mobile */
+    .text-white\/70 {
+        opacity: 0.9 !important;
+    }
+    
+    /* Timeline mobile layout - fixed with flexbox */
+    .timeline-line {
+        left: 8px !important;
+    }
+    
+    .timeline-item {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        position: relative !important;
+        padding-left: 0 !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .timeline-dot {
+        position: relative !important;
+        flex-shrink: 0;
+        order: -1 !important; /* Move dot to beginning */
+        left: 0 !important;
+        top: 8px !important;
+        margin-right: 25px !important;
+        margin-left: 0 !important;
+        transform: none !important;
+        width: 16px;
+        height: 16px;
+        border-width: 2px;
+    }
+    
+    .timeline-item > div:first-child {
+        order: 1 !important;
+        flex: 1;
+    }
+    
+    
+    /* Mobile buttons optimization */
+    .premium-button {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 0.875rem !important;
+    }
+    
+    /* Touch targets */
+    button, a {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Mobile menu spacing */
+    #mobileMenu a {
+        padding: 0.75rem 0;
+    }
+    
+    /* Section padding adjustments */
+    section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    
+    .floating-badge {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+    
+    /* Table responsiveness */
+    table {
+        font-size: 0.875rem;
+    }
+    
+    /* Portfolio grid text */
+    .portfolio-item h3 {
+        font-size: 1rem !important;
+    }
+    
+    /* Image height adjustments */
+    .h-96 {
+        height: 16rem !important;
+    }
+    
+    .h-80 {
+        height: 14rem !important;
+    }
+}
+
+/* Portfolio Modal - Simplified Breakpoint System */
+
+/* 1. Mobile Phones (portrait) - Vertical Layout */
+@media (max-width: 767px) {
+    #portfolioModal {
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 50 !important;
+        overflow: hidden !important;
+    }
+
+    #portfolioModal .modal-panel {
+        margin: 0;
+        max-width: 100%;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: white !important;
+    }
+
+    /* Image section - fixed height at top */
+    #portfolioModal .modal-image-container {
+        height: 30vh;
+        height: 30dvh;
+        max-height: 300px;
+        min-height: 200px;
+        flex-shrink: 0;
+        position: relative;
+        background: #000 !important;
+    }
+
+    /* Main layout - vertical stack */
+    #portfolioModal .flex.flex-col.lg\:flex-row {
+        height: 100vh;
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    #portfolioModal .lg\:w-2\/3 {
+        flex: 0 0 auto;
+        height: auto;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Content section - scrollable */
+    #portfolioModal .lg\:w-1\/3 {
+        flex: 1 1 auto;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        min-height: 0;
+        padding: 1.5rem;
+        padding-bottom: 160px; /* Space for fixed WhatsApp CTA */
+    }
+
+    /* Fixed WhatsApp button */
+    #portfolioModal .whatsapp-cta-section {
+        position: fixed !important;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.15);
+        padding: 1rem;
+        margin: 0 !important;
+        border-radius: 0;
+        z-index: 20;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    /* Touch-friendly controls */
+    #portfolioModal .modal-nav-btn {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    #modalImageDots button {
+        width: 8px !important;
+        height: 8px !important;
+        min-width: 8px !important;
+        min-height: 8px !important;
+        padding: 0;
+    }
+
+    /* Typography */
+    #modalTitle {
+        font-size: 1.5rem !important;
+        line-height: 1.3;
+        padding-right: 2rem;
+    }
+
+    #modalDescription {
+        font-size: 0.925rem;
+        line-height: 1.6;
+    }
+
+    /* Close button */
+    #closeModal {
+        position: fixed !important;
+        top: 1rem;
+        right: 1rem;
+        z-index: 30;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 50%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets */
+    #portfolioModal button {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    #portfolioModal .modal-nav-btn:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 812px) and (orientation: landscape) {
+    #portfolioModal .modal-image-container {
+        max-height: 50vh !important;
+    }
+    
+    #portfolioModal .modal-panel {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+/* Desktop Modal Styles - Override mobile styles for desktop */
+@media (min-width: 769px) {
+    /* Reset modal container to desktop layout */
+    #portfolioModal .modal-panel {
+        margin: auto !important;
+        max-width: 1200px !important;
+        width: 90vw !important;
+        height: 90vh !important;
+        max-height: 90vh !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+    }
+}
+
+/* 2. Tablet Portrait - Vertical Layout for Portrait Tablets */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+    #portfolioModal {
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 50 !important;
+        overflow: hidden !important;
+    }
+    #portfolioModal .modal-panel {
+        margin: 2vh auto !important;
+        max-width: 95vw !important;
+        width: 95vw !important;
+        height: 96vh !important;
+        max-height: 96vh !important;
+        border-radius: 0.75rem !important;
+        overflow: hidden !important;
+    }
+    /* Force vertical layout for portrait tablets */
+    #portfolioModal .flex.flex-col.lg\:flex-row {
+        flex-direction: column !important;
+        height: 100% !important;
+        overflow: hidden !important;
+    }
+    /* Image section - top 45% */
+    #portfolioModal .lg\:w-2\/3 {
+        width: 100% !important;
+        height: 45% !important;
+        flex-shrink: 0 !important;
+        overflow: hidden !important;
+        background: #000 !important;
+    }
+    /* Content section - bottom 55% with scroll */
+    #portfolioModal .lg\:w-1\/3 {
+        width: 100% !important;
+        height: 55% !important;
+        overflow-y: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    /* Modal body with proper height constraint */
+    #portfolioModal .modal-body {
+        flex: 1 1 auto !important;
+        max-height: calc(55vh - 120px) !important;
+        overflow-y: auto !important;
+        padding: 1rem 1.5rem !important;
+    }
+    /* Footer positioning */
+    #portfolioModal .modal-footer,
+    #portfolioModal .whatsapp-cta-section {
+        flex-shrink: 0 !important;
+        margin-top: auto !important;
+    }
+}
+
+/* 3. Desktop/Landscape - Side-by-side Layout */
+@media (min-width: 768px) and (orientation: landscape), (min-width: 1024px) {
+    #portfolioModal {
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 50 !important;
+        overflow: hidden !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    #portfolioModal .modal-panel {
+        margin: auto !important;
+        max-width: 1200px !important;
+        width: 90vw !important;
+        height: 90vh !important;
+        max-height: 90vh !important;
+        border-radius: 0.75rem !important;
+        overflow: hidden !important;
+    }
+    /* Force horizontal layout */
+    #portfolioModal .flex.flex-col.lg\:flex-row {
+        flex-direction: row !important;
+        height: 100% !important;
+        overflow: hidden !important;
+    }
+    /* Image section - left 2/3 */
+    #portfolioModal .lg\:w-2\/3 {
+        width: 66.666667% !important;
+        height: 100% !important;
+        flex-shrink: 0 !important;
+        overflow: hidden !important;
+        background: #000 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    /* Content section - right 1/3 */
+    #portfolioModal .lg\:w-1\/3 {
+        width: 33.333333% !important;
+        height: 100% !important;
+        overflow-y: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    /* Modal body with proper height constraint */
+    #portfolioModal .modal-body {
+        flex: 1 1 auto !important;
+        max-height: calc(100vh - 250px) !important;
+        overflow-y: auto !important;
+        padding: 1rem 1.5rem !important;
+    }
+    /* Image display optimization */
+    #portfolioModal .modal-image-container,
+    #portfolioModal .modal-slideshow {
+        width: 100% !important;
+        height: 100% !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+    #portfolioModal .modal-image-container img,
+    #portfolioModal .modal-slideshow img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        background: #000 !important;
+    }
+    /* Footer positioning */
+    #portfolioModal .modal-footer,
+    #portfolioModal .whatsapp-cta-section {
+        flex-shrink: 0 !important;
+        margin-top: auto !important;
+    }
+}
+
+/* 4. Compact Height - Any desktop with limited height */
+@media (min-width: 768px) and (max-height: 900px) {
+    #portfolioModal .modal-panel {
+        height: 98vh !important;
+        width: 95vw !important;
+        margin: 1vh auto !important;
+    }
+    /* Reduce padding for limited height */
+    #portfolioModal .modal-header {
+        padding: 0.75rem 1.25rem 0.5rem 1.25rem !important;
+    }
+    #portfolioModal .modal-body {
+        padding: 0.5rem 1.25rem !important;
+        max-height: calc(98vh - 200px) !important;
+    }
+    #portfolioModal .whatsapp-cta-section {
+        padding: 0.5rem 1.25rem !important;
+    }
+}
+
+/* Remove remaining redundant breakpoints - now handled by simplified 4-breakpoint system above */
+
+/* Desktop Modal - All desktop viewports - LEGACY SECTION TO BE REMOVED */
+
+/* Portfolio Modal Breakpoint Consolidation Complete - All legacy breakpoints removed */
+
+/* Accessibility Improvements */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.focus-visible:focus {
+    outline: 2px solid var(--pspl-gold);
+    outline-offset: 2px;
+}
+
+
+/* Custom Cursor (Desktop Only) */
+@media (pointer: fine) {
+    .custom-cursor {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--pspl-gold);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9998;
+        transition: all 0.1s ease;
+        transform: translate(-50%, -50%);
+    }
+    
+    .custom-cursor.hover {
+        transform: translate(-50%, -50%) scale(1.5);
+        background: rgba(212, 165, 116, 0.2);
+    }
+}
+
+/* Performance Optimizations */
+.will-change-transform {
+    will-change: transform;
+}
+
+.will-change-opacity {
+    will-change: opacity;
+}
+
+/* GPU Acceleration for animated elements - Simplified */
+.portfolio-item,
+.timeline-item,
+.testimonial-card,
+.service-card,
+.card {
+    /* GPU optimization without transform */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    /* Remove perspective as it can cause issues */
+    contain: layout style paint;
+}
+
+/* Optimize hero background parallax */
+.hero-bg {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* Reduce paint areas with containment */
+.portfolio-item,
+.testimonial-card,
+.card {
+    contain: layout style paint;
+}
+
+/* Smooth scrolling optimization */
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--pspl-gold) var(--pspl-dark);
+    /* Prevent scroll jank on mobile */
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Disable expensive effects on mobile for performance */
+@media (max-width: 768px) {
+    /* Simplify transforms for mobile */
+    .portfolio-item,
+    .timeline-item,
+    .testimonial-card,
+    .card {
+        transform: none !important;
+        transition: opacity 0.3s ease-out !important;
+    }
+    
+    /* Disable hover effects on mobile */
+    .portfolio-item:hover,
+    .card:hover,
+    .service-card:hover,
+    .testimonial-card:hover,
+    .filter-btn:hover,
+    .premium-button:hover,
+    .cta-primary:hover,
+    .fleet-card:hover,
+    .white-card:hover,
+    .purpose-card:hover,
+    .pillar-card:hover,
+    .promise-card:hover,
+    .featured-card:hover,
+    .core-value-item:hover,
+    .stat-wrapper:hover {
+        transform: none !important;
+    }
+    
+    /* Keep standardized shadows on mobile for all cards */
+    .white-card,
+    .purpose-card,
+    .pillar-card,
+    .promise-card,
+    .featured-card,
+    .fleet-card,
+    .service-card,
+    .testimonial-card,
+    .card {
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+        -webkit-box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    /* Modal keeps its own shadow */
+    .modal-panel {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    }
+}
+
+/* Foldable & Portrait Tablet Device Fixes (Z Fold 6 Folded, iPad Pro Portrait) */
+@media (min-width: 769px) and (max-aspect-ratio: 1.3) and (max-height: 1400px) {
+    /* Modal Layout Fixes - Force vertical layout for tall narrow screens */
+    #portfolioModal .flex.flex-col.lg\:flex-row {
+        flex-direction: column !important;
+    }
+
+    #portfolioModal .modal-panel {
+        width: 95vw !important;
+        height: 95vh !important;
+    }
+
+    /* Optimize image section for vertical layout */
+    #portfolioModal .lg\:w-2\/3 {
+        width: 100% !important;
+        height: 50% !important;
+    }
+
+    /* Optimize content section with proper scrolling */
+    #portfolioModal .lg\:w-1\/3 {
+        width: 100% !important;
+        height: 50% !important;
+        overflow-y: auto !important;
+    }
+
+    /* Ensure modal body can scroll properly with proper height constraint */
+    #portfolioModal .modal-body {
+        max-height: calc(50vh - 120px) !important; /* Reserve space for header and footer in vertical layout */
+        overflow-y: auto !important;
+        flex: 1 1 auto !important;
+    }
+
+    /* Ensure WhatsApp footer stays consistently positioned */
+    #portfolioModal .modal-footer,
+    #portfolioModal .whatsapp-cta-section {
+        flex-shrink: 0 !important;
+        margin-top: auto !important;
+        position: relative !important;
+    }
+
+    /* Navigation Fixes - Reduce spacing for narrow screens */
+    nav .hidden.lg\:flex {
+        gap: 0.75rem !important;
+    }
+
+    nav .nav-link {
+        font-size: 0.875rem !important;
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    /* Contact button fixes - prevent wrapping and cutoff */
+    nav .premium-button {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+        font-size: 0.875rem !important;
+        white-space: nowrap !important;
+    }
+}
+
+/* Reduce motion for accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Smooth Transitions */
+.smooth-transition {
+    transition: all var(--transition-base);
+}
+
+/* Reveal animation classes (replaces inline styles from JS) */
+.reveal-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+.reveal-hidden.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Ensure hover works even with reveal animation */
+.reveal-hidden.revealed:hover {
+    transform: translateY(-2px) !important;
+}
+
+/* Portfolio item visibility (replaces inline styles) */
+.portfolio-item.portfolio-visible {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+.portfolio-item.portfolio-visible:hover {
+    transform: translateY(-2px) !important;
+}
+
+/* Disable hover effects on headers */
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+    transform: none !important;
+}
+
+/* Disable hover translate on timeline items to preserve alignment */
+.timeline-item:hover {
+    transform: none !important;
+}
+
+/* Timeline items with animation classes should also not translate on hover */
+.timeline-item.animate-on-scroll.slide-left.in-view:hover {
+    transform: translateX(0) !important;
+}
+
+.timeline-item.animate-on-scroll.slide-right.in-view:hover {
+    transform: translateX(0) !important;
+}
+
+/* Override ALL animation transforms on hover - highest specificity */
+*:hover.card,
+*:hover.service-card,
+*:hover.portfolio-item,
+*:hover.fleet-card,
+*:hover.testimonial-card,
+*:hover.purpose-card,
+*:hover.pillar-card,
+*:hover.promise-card,
+*:hover.white-card,
+*:hover.stat-wrapper,
+*:hover.core-value-item,
+*:hover.featured-card {
+    transform: translateY(-2px) !important;
+}
+
+/* Featured Project Cards */
+.featured-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.featured-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 40px rgba(212, 165, 116, 0.2);
+}
+
+/* Carousel Styles */
+.carousel-container {
+    min-height: 400px;
+}
+
+.carousel-image {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    margin: auto;
+}
+
+.thumbnail-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--pspl-gold) transparent;
+}
+
+.thumbnail-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb {
+    background: var(--pspl-gold);
+    border-radius: 2px;
+}
+
+/* Animation Initial States - Commented out to allow JS animations */
+/* .reveal-fade,
+.reveal-scale,
+.reveal-text,
+.timeline-item {
+    opacity: 0;
+}
+
+.reveal-fade {
+    transform: translateY(30px);
+}
+
+.reveal-scale {
+    transform: scale(0.9);
+}
+
+.reveal-text {
+    transform: translateY(20px);
+}
+
+.timeline-item:nth-child(odd) {
+    transform: translateX(-50px);
+}
+
+.timeline-item:nth-child(even) {
+    transform: translateX(50px);
+}
+
+.reveal-fade.visible,
+.reveal-scale.visible,
+.reveal-text.visible,
+.timeline-item.visible {
+    opacity: 1; 
+} */
+
+/* .reveal-fade.visible {
+    transition-duration: 0.8s;
+}
+
+.reveal-scale.visible {
+    transition-duration: 0.5s;
+}
+
+.reveal-text.visible {
+    transition-duration: 0.6s;
+}
+
+.timeline-item.visible {
+    transition-duration: 0.8s;
+} */
+
+/* Timeline Slide Animations */
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Timeline animation classes */
+.timeline-slide-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-slide-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-slide-left.timeline-animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-slide-right.timeline-animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Apply only on desktop */
+@media (min-width: 768px) {
+    .timeline-item {
+        overflow: visible;
+    }
+
+    /* Stagger the animations */
+    .timeline-item:nth-child(1) .timeline-slide-left { transition-delay: 0.1s; }
+    .timeline-item:nth-child(1) .timeline-slide-right { transition-delay: 0.2s; }
+    .timeline-item:nth-child(2) .timeline-slide-left { transition-delay: 0.1s; }
+    .timeline-item:nth-child(2) .timeline-slide-right { transition-delay: 0.2s; }
+    .timeline-item:nth-child(3) .timeline-slide-left { transition-delay: 0.1s; }
+    .timeline-item:nth-child(3) .timeline-slide-right { transition-delay: 0.2s; }
+    .timeline-item:nth-child(4) .timeline-slide-left { transition-delay: 0.1s; }
+    .timeline-item:nth-child(4) .timeline-slide-right { transition-delay: 0.2s; }
+    .timeline-item:nth-child(5) .timeline-slide-left { transition-delay: 0.1s; }
+    .timeline-item:nth-child(5) .timeline-slide-right { transition-delay: 0.2s; }
+    .timeline-item:nth-child(6) .timeline-slide-left { transition-delay: 0.1s; }
+    .timeline-item:nth-child(6) .timeline-slide-right { transition-delay: 0.2s; }
+    .timeline-item:nth-child(7) .timeline-slide-left { transition-delay: 0.1s; }
+    .timeline-item:nth-child(7) .timeline-slide-right { transition-delay: 0.2s; }
+    .timeline-item:nth-child(8) .timeline-slide-left { transition-delay: 0.1s; }
+    .timeline-item:nth-child(8) .timeline-slide-right { transition-delay: 0.2s; }
+    .timeline-item:nth-child(9) .timeline-slide-left { transition-delay: 0.1s; }
+    .timeline-item:nth-child(9) .timeline-slide-right { transition-delay: 0.2s; }
+}
+
+/* On mobile, just fade in */
+@media (max-width: 767px) {
+    .timeline-slide-left,
+    .timeline-slide-right {
+        transform: translateY(20px);
+    }
+
+    .timeline-slide-left.timeline-animated,
+    .timeline-slide-right.timeline-animated {
+        transform: translateY(0);
+    }
+}
+
+/* Glass Morphism Effects */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+    background: rgba(26, 26, 26, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced Card Reveal Animations */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Portfolio items use reveal system with scale animation */
+.portfolio-item.reveal-on-scroll {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.portfolio-item.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* Staggered animations for grouped elements */
+.reveal-on-scroll:nth-child(1) { transition-delay: 0.1s; }
+.reveal-on-scroll:nth-child(2) { transition-delay: 0.2s; }
+.reveal-on-scroll:nth-child(3) { transition-delay: 0.3s; }
+.reveal-on-scroll:nth-child(4) { transition-delay: 0.4s; }
+
+/* Core values get special staggered timing */
+.core-value-item.reveal-on-scroll:nth-child(1) { transition-delay: 0.1s; }
+.core-value-item.reveal-on-scroll:nth-child(2) { transition-delay: 0.2s; }
+.core-value-item.reveal-on-scroll:nth-child(3) { transition-delay: 0.3s; }
+.core-value-item.reveal-on-scroll:nth-child(4) { transition-delay: 0.4s; }
+
+/* Promise cards get custom timing */
+.promise-card.reveal-on-scroll:nth-child(1) { transition-delay: 0.15s; }
+.promise-card.reveal-on-scroll:nth-child(2) { transition-delay: 0.3s; }
+.promise-card.reveal-on-scroll:nth-child(3) { transition-delay: 0.45s; }
+
+/* Service cards get longer delay for nice flow */
+.card.reveal-on-scroll:nth-child(1) { transition-delay: 0.1s; }
+.card.reveal-on-scroll:nth-child(2) { transition-delay: 0.25s; }
+.card.reveal-on-scroll:nth-child(3) { transition-delay: 0.4s; }
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll,
+    .portfolio-item.reveal-on-scroll {
+        transition: none;
+    }
+}
+
+/* Defensive rule: Ensure modal respects hidden class despite media query overrides */
+#portfolioModal.hidden {
+    display: none !important;
+}
+
+/* Ensure divider has equal spacing above and below between subtitle and Project Details */
+#portfolioModal .modal-body .w-16.h-1.bg-pspl-gold {
+    margin: 1.5rem 0; /* 24px equal spacing above and below for perfect balance */
+}
+
+/* Add breathing room at bottom of WhatsApp button */
+#portfolioModal .whatsapp-cta-section {
+    margin-bottom: 1rem !important; /* 16px bottom spacing */
+}
