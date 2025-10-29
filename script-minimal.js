@@ -2,6 +2,28 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOMContentLoaded event fired - script is running');
 
+    // Samsung Internet font scaling fix
+    function fixSamsungInternetFontScaling() {
+        const isSamsungInternet = navigator.userAgent.includes('SamsungBrowser');
+        if (isSamsungInternet) {
+            console.log('Samsung Internet detected - applying font scaling fix');
+            const baseFontSize = 16; // Expected base font size in px
+            const body = document.body;
+            const computedStyle = window.getComputedStyle(body);
+            const computedFontSize = parseFloat(computedStyle.fontSize);
+
+            if (computedFontSize !== baseFontSize) {
+                const correctionRatio = baseFontSize / computedFontSize;
+                const correctedSize = baseFontSize * correctionRatio;
+                body.style.fontSize = correctedSize + 'px';
+                console.log(`Font scaling corrected: ${computedFontSize}px → ${correctedSize}px`);
+            }
+        }
+    }
+
+    // Apply Samsung Internet fix
+    fixSamsungInternetFontScaling();
+
     // Initialize Lucide icons
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();

@@ -154,13 +154,19 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, -apple-system, BlinkMacSystemFont, sans-serif;
     /* Removed overflow-x: hidden as it breaks IntersectionObserver animations */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: var(--pspl-cream);
     color: var(--pspl-dark);
     position: relative;
+
+    /* Samsung Internet font scaling prevention */
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
 /* Background Texture */
@@ -181,12 +187,18 @@ body::before {
 
 /* Typography */
 .font-display {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Playfair Display', 'Times New Roman', Georgia, serif;
+    /* Disable problematic ligatures for Samsung Internet */
+    font-feature-settings: "liga" 0, "clig" 0;
+    -webkit-font-feature-settings: "liga" 0, "clig" 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Playfair Display', 'Times New Roman', Georgia, serif;
     font-weight: var(--fw-bold);
+    /* Disable problematic ligatures for Samsung Internet */
+    font-feature-settings: "liga" 0, "clig" 0;
+    -webkit-font-feature-settings: "liga" 0, "clig" 0;
     line-height: var(--lh-tight);
     letter-spacing: var(--ls-tight);
 }
