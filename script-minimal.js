@@ -653,7 +653,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Club Street',
             category: 'Heritage • Wood',
             images: getProjectImages('Club Street'),
-            description: 'Chengal decked upper storey architectural support construction possesses constant movement, resulting in challenges during sanding and gap filling. A tailored formula, to achieve result worthy of its conservation status.',
+            description: 'Chengal decked upper storey architectural support construction possesses constant movement, resulting in challenges during sanding and gap filling. A tailored procedure, to achieve result worthy of its conservation status.',
             service: 'Chengal Wood Sand & Stain',
             client: 'Conservation Shophouse',
             material: 'Chengal Wood',
