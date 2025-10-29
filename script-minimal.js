@@ -639,17 +639,6 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '1 day'
         },
         {
-            title: 'Club Street',
-            category: 'Heritage • Wood',
-            images: getProjectImages('Club Street'),
-            description: 'Chengal decked upper storey architectural support construction possesses constant movement, resulting in challenges during sanding and gap filling. A tailored formula, to achieve result worthy of its conservation status.',
-            service: 'Chengal Wood Sand & Stain',
-            client: 'Conservation Shophouse',
-            material: 'Chengal Wood',
-            location: 'Club Street, Singapore 069440',
-            duration: '1 day'
-        },
-        {
             title: 'Swettenham Road',
             category: 'Heritage • Terrazzo',
             images: getProjectImages('Swettenham Road'),
@@ -660,8 +649,30 @@ document.addEventListener('DOMContentLoaded', function() {
             location: 'Swettenham Road, Singapore 248075',
             duration: '1 week'
         },
+        {
+            title: 'Club Street',
+            category: 'Heritage • Wood',
+            images: getProjectImages('Club Street'),
+            description: 'Chengal decked upper storey architectural support construction possesses constant movement, resulting in challenges during sanding and gap filling. A tailored formula, to achieve result worthy of its conservation status.',
+            service: 'Chengal Wood Sand & Stain',
+            client: 'Conservation Shophouse',
+            material: 'Chengal Wood',
+            location: 'Club Street, Singapore 069440',
+            duration: '1 day'
+        },
 
         // Consultation Projects
+        {
+            title: 'Bukit Timah',
+            category: 'Consultation • Inspection',
+            images: getProjectImages('Bukit Timah'),
+            description: 'Alongside with homeowner, builder\'s team and their marble polisher we inspected the marble polishing work and recommended procedures to further refine the job.',
+            service: 'Marble Post Polishing Quality Check',
+            client: 'Landed House',
+            material: 'Carrara Marble Floor',
+            location: 'Bukit Timah',
+            duration: '2 hours'
+        },
         {
             title: 'The Avenir',
             category: 'Consultation • Inspection',
@@ -685,15 +696,15 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '1 month'
         },
         {
-            title: 'Bukit Timah',
+            title: 'Treasure @ Tampines',
             category: 'Consultation • Inspection',
-            images: getProjectImages('Bukit Timah'),
-            description: 'Alongside with homeowner, builder\'s team and their marble polisher we inspected the marble polishing work and recommended procedures to further refine the job.',
-            service: 'Marble Post Polishing Quality Check',
-            client: 'Landed House',
-            material: 'Carrara Marble Floor',
-            location: 'Bukit Timah',
-            duration: '2 hours'
+            images: getProjectImages('Treasure @ Tampines'),
+            description: 'Conducted a joint inspection with the developer\'s team and defect inspection company to assess the quality of masonry work which include mis-alignment, lippage, inconsistent grout colours. In addition, follow ups to inspect the standard of rectification works done.',
+            service: 'Tile Floor Consultation',
+            client: 'Condominium',
+            material: 'Tile',
+            location: '3 Tampines Lane, Singapore 528483',
+            duration: '3 weeks'
         },
         {
             title: 'Camborne Road',
@@ -705,17 +716,6 @@ document.addEventListener('DOMContentLoaded', function() {
             material: 'Nero Marquina Marble',
             location: 'Camborne Road, Singapore 299870',
             duration: '3 months'
-        },
-        {
-            title: 'Treasure @ Tampines',
-            category: 'Consultation • Inspection',
-            images: getProjectImages('Treasure @ Tampines'),
-            description: 'Conducted a joint inspection with the developer\'s team and defect inspection company to assess the quality of masonry work which include mis-alignment, lippage, inconsistent grout colours. In addition, follow ups to inspect the standard of rectification works done.',
-            service: 'Tile Floor Consultation',
-            client: 'Condominium',
-            material: 'Tile',
-            location: '3 Tampines Lane, Singapore 528483',
-            duration: '3 weeks'
         },
         {
             title: 'Jadescape',
